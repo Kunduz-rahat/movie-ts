@@ -7,7 +7,7 @@ import apiConfig from "../../api";
 export const fetchMovies = () => {
   return (dispatch:Dispatch<MovieAction>) => {
     dispatch({type: MovieActionTypes.FETCH_MOVIE})
-    axios(`${apiConfig.baseUrl}discover/movie?page=1&api_key=${apiConfig.apiKey}`)
+    axios(`${apiConfig.baseUrl}3/discover/movie?page=1&api_key=${apiConfig.apiKey}`)
       .then(({data}) => {
         dispatch({type: MovieActionTypes.FETCH_MOVIE_SUCCESS, payload: data.results})
       }).catch((error) => {
