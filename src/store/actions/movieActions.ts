@@ -1,17 +1,20 @@
 import { Dispatch } from "redux";
 import axios from 'axios'
-import { MovieAction, MovieActionTypes } from "../../types/movie"
-import apiConfig from "../../api";
+import { MovieListAction, MovieListActionTypes } from "../../types/movieTypes"
+import apiConfig from "../../api/apiConfig.js";
 
 
 export const fetchMovies = () => {
-  return (dispatch:Dispatch<MovieAction>) => {
-    dispatch({type: MovieActionTypes.FETCH_MOVIE})
-    axios(`${apiConfig.baseUrl}3/discover/movie?page=1&api_key=${apiConfig.apiKey}`)
+  return (dispatch:Dispatch<MovieListAction>) => {
+    
+    axios(`${apiConfig.baseUrl}3/movie/popular?api_key=${apiConfig.apiKey}`)
       .then(({data}) => {
-        dispatch({type: MovieActionTypes.FETCH_MOVIE_SUCCESS, payload: data.results})
+        dispatch({type: MovieListActionTypes.FETCH_MOVIE_LIST_SUCCESS, payload: {movies:data.results,
+        pages:data.total_pages, results:data.total_results}
+          
+  })
       }).catch((error) => {
-      dispatch({type: MovieActionTypes.FETCH_MOVIE_ERROR, payload:"Произошла ошибка при загрузке фильмов"})
+      dispatch({type: MovieListActionTypes.FETCH_MOVIE_LIST_ERROR, payload:{error:"Произошла ошибка при загрузке фильмов"}})
     })
   }
 }

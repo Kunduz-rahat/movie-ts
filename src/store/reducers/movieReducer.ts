@@ -1,23 +1,45 @@
-import { MovieAction, MovieActionTypes, MovieState } from "../../types/movie"
+import {
 
+  MovieListAction,
+  MovieListActionTypes,
+  MovieListState,
+} from "../../types/movieTypes";
 
-const initialState:MovieState ={
-	movies:[],
-	error: null,
-	loading:false
+const initialState: MovieListState = {
+  movies: [],
+  loading: false,
+  error: '',
+  results: 0,
+  pages: 0,
+  query: "",
+};
 
-}
+export const movieListReducer = (
+  state = initialState,
+  action: MovieListAction
+): MovieListState => {
+  switch (action.type) {
+    case MovieListActionTypes.FETCH_MOVIE_LIST_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        movies: action.payload.movies,
+        pages: action.payload.pages,
+        results: action.payload.results,
+      };
+			case MovieListActionTypes.FETCH_MOVIE_LIST_ERROR:
+				return {...state, error:action.payload.error}
+  }
+};
 
-
-export const movieReducer = (state = initialState, action:MovieAction):MovieState=>{
-switch (action.type){
-	case MovieActionTypes.FETCH_MOVIE:
-		return {loading:true, error:null, movies:[]}
-	case MovieActionTypes.FETCH_MOVIE_SUCCESS:
-		return {loading:false, error:null, movies:action.payload}	
-		case MovieActionTypes.FETCH_MOVIE_ERROR:
-		return {loading:false, error:action.payload, movies:[]}
-	default:
-		return state
-}
-}
+// const initialItemState: MovieItemState = {
+//   movie: [],
+//   loading: false,
+// };
+// export const movieItemReducer = (
+//   state = initialItemState,
+//   action: MovieItemAction
+// ): MovieItemState => {
+//   switch (action.type) {
+//   }
+// };
