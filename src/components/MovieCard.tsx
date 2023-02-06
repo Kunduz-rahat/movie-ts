@@ -22,7 +22,7 @@ export const MovieCard: FC = () => {
   return (
     <div>
       {movies.map((movie) => (
-        <div>{movie.id}</div>
+        <div>{movie.original_title}</div>
       ))}
     </div>
   );

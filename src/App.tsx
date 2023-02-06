@@ -1,17 +1,26 @@
-import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { Layout } from './components/Layout';
 import { MovieCard } from './components/MovieCard';
 import { MovieList } from './components/MovieList';
+import { Home } from './views/Home';
+import { NavBar } from './components/NavBar';
+
 
 export const App = () => {
   return (
-  <Layout>
+  // <Layout>
+  <BrowserRouter>
+    <NavBar/>
     <Routes>
-      <Route element={<MovieList/>}/>
-      <Route path='/' element={<MovieCard/>}/>
+      <Route path='/' element={<Home/>}/>
+      <Route path='movielist' element={<MovieList/>}/>
+      <Route path='movieitem' element={<MovieCard/>}/>
     </Routes>
-  </Layout>
+  </BrowserRouter>
+
+  //  </Layout>
   )
 }
 

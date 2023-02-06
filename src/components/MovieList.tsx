@@ -6,8 +6,8 @@ export const MovieList = () => {
 	
 	return (
 		<div>
-			<MovieCard/>
-		
+			{/* <MovieCard/> */}
+		Movie List
 		</div>
 	)
 }
