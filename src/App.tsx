@@ -14,7 +14,7 @@ export const App = () => {
   // <Layout>
   <BrowserRouter>
     <NavBar/>
-    <div className='container '>
+    <div >
     <Routes>
       <Route path='/' element={<Movie/>}/>
       <Route path='movielist' element={<MovieList/>}/>
