@@ -10,8 +10,16 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+#root{
+  background-color: black;
+  width: 100%;
+  color: white;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+.header{
+  background-color: black;
+  height: 5rem;
 }

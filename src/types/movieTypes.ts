@@ -10,12 +10,13 @@ export const FETCH_MOVIE_ITEM_REQUEST = "FETCH_MOVIE_ITEM_REQUEST",
 
 export interface IMovie {
   id: number;
-  poster_path: string;
+  backdrop_path: string;
   release_date: string;
   vote_average: number;
   genres: IGenge[];
   original_title: string;
   overview: string;
+  poster_path:string
 }
 
 export interface IGenge {
