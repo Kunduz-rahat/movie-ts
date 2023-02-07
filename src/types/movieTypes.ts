@@ -1,6 +1,12 @@
 //Movie Item
 
-import { Action } from "@remix-run/router";
+export const FETCH_MOVIE_ITEM_REQUEST = "FETCH_MOVIE_ITEM_REQUEST",
+  FETCH_MOVIE_ITEM_SUCCESS = "FETCH_MOVIE_ITEM_SUCCESS",
+  FETCH_MOVIE_ITEM_ERROR = "FETCH_MOVIE_ITEM_ERROR",
+  FETCH_MOVIE_LIST_REQUEST = "FETCH_MOVIE_LIST_REQUEST",
+  FETCH_MOVIE_LIST_SUCCESS = "FETCH_MOVIE_LIST_SUCCESS",
+  FETCH_MOVIE_LIST_ERROR = "FETCH_MOVIE_LIST_ERROR";
+
 
 export interface IMovie {
   id: number;
@@ -8,8 +14,8 @@ export interface IMovie {
   release_date: string;
   vote_average: number;
   genres: IGenge[];
-  original_title:string,
-  overview:string
+  original_title: string;
+  overview: string;
 }
 
 export interface IGenge {
@@ -27,26 +33,18 @@ export type MovieListState = {
   query: string;
 };
 
-export enum MovieListActionTypes {
-  FETCH_MOVIE_LIST_ERROR = "FETCH_MOVIE_LIST_ERROR",
-  FETCH_MOVIE_LIST_SUCCESS = "FETCH_MOVIE_LIST_SUCCESS",
-  FETCH_MOVIE_LIST_REQUEST = "FETCH_MOVIE_LIST_REQUEST",
-
-}
-
 export interface MovieActionListError {
-  type: MovieListActionTypes.FETCH_MOVIE_LIST_ERROR;
+  type: typeof FETCH_MOVIE_LIST_ERROR;
   payload: {
     error: string;
   };
 }
 
-
-export  interface MovieActionListRequest{
-  type:MovieListActionTypes.FETCH_MOVIE_LIST_REQUEST
+export interface MovieActionListRequest {
+  type: typeof FETCH_MOVIE_LIST_REQUEST;
 }
 export interface MovieActionListSuccess {
-  type: MovieListActionTypes.FETCH_MOVIE_LIST_SUCCESS;
+  type: typeof FETCH_MOVIE_LIST_SUCCESS;
   payload: {
     movies: IMovie[];
     pages: number;
@@ -54,33 +52,34 @@ export interface MovieActionListSuccess {
   };
 }
 
-export type MovieListAction = MovieActionListError | MovieActionListSuccess |MovieActionListRequest
+export type MovieListAction =
+  | MovieActionListError
+  | MovieActionListSuccess
+  | MovieActionListRequest;
 
 // Movie Item
 
-export interface MovieItemState  {
+export type MovieItemState = {
   movie: IMovie;
   error: string;
-  loading:boolean
-
+  loading: boolean;
 };
 
-export enum MovieItemActionTypes {
-  FETCH_MOVIE_ITEM_REQUEST = "FETCH_MOVIE_ITEM_REQUEST",
-  FETCH_MOVIE_ITEM_SUCCESS = "FETCH_MOVIE_ITEM_SUCCESS",
-  FETCH_MOVIE_ITEM_ERROR = "FETCH_MOVIE_ITEM_ERROR",
-}
 
-export interface MovieItemActionError{
-  type:MovieItemActionTypes.FETCH_MOVIE_ITEM_ERROR,
-  payload: {error:string}
+
+export interface MovieItemActionError {
+  type:typeof FETCH_MOVIE_ITEM_ERROR;
+  payload: { error: string };
 }
 export interface MovieItemActionRequest {
-  type: MovieItemActionTypes.FETCH_MOVIE_ITEM_REQUEST;
+  type:typeof FETCH_MOVIE_ITEM_REQUEST;
 }
 export interface MovieItemActionSuccess {
-  type: MovieItemActionTypes.FETCH_MOVIE_ITEM_SUCCESS;
+  type: typeof FETCH_MOVIE_ITEM_SUCCESS;
   payload: IMovie;
 }
 
-export type MovieItemAction = MovieItemActionRequest | MovieItemActionSuccess | MovieItemActionError;
+export type MovieItemAction =
+  | MovieItemActionRequest
+  | MovieItemActionSuccess
+  | MovieItemActionError;

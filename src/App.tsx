@@ -6,6 +6,7 @@ import { MovieCard } from './components/MovieCard';
 import { MovieList } from './components/MovieList';
 import { Home } from './views/Home';
 import { NavBar } from './components/NavBar';
+import { Movie } from './views/Movie';
 
 
 export const App = () => {
@@ -14,7 +15,7 @@ export const App = () => {
   <BrowserRouter>
     <NavBar/>
     <Routes>
-      <Route path='/' element={<Home/>}/>
+      <Route path='/' element={<Movie/>}/>
       <Route path='movielist' element={<MovieList/>}/>
       <Route path='movieitem' element={<MovieCard/>}/>
     </Routes>

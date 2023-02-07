@@ -9,5 +9,6 @@ const rootReducer = combineReducers({
 	movieItem:movieItemReducer
 })
 
-export type RootState = ReturnType<typeof rootReducer>
-export const store = createStore(rootReducer,composeWithDevTools(applyMiddleware(thunk)) )
+const middleware = [thunk]
+
+export const store = createStore(rootReducer,composeWithDevTools(applyMiddleware(...middleware)) )
