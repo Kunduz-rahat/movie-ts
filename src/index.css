@@ -10,16 +10,17 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-#root{
-  background-color: black;
-  width: 100%;
-  color: white;
+@layer base{
+  body{
+    font-family: "Poppins", sans-serif;
+    background: black;
+    /* background: -webkit-linear-gradient(to rigth, #243B55, #141E30);
+    background: linear-gradient(to rigth, #243B55, #141E30); */
+    min-height: 100vh;
+    color: white;
+  }
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
-.header{
-  background-color: black;
-  height: 5rem;
 }
