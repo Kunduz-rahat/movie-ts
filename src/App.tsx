@@ -7,6 +7,8 @@ import { Actors } from "./views/Actors";
 import { ActorCart } from "./components/ActorCard";
 import { Serials } from "./views/Serials";
 import { SerialCard } from "./components/SerialCard";
+import { Movies } from "./views/Movies";
+import { MovieCard } from "./components/MovieCard";
 
 export const App = () => {
   return (
@@ -16,7 +18,8 @@ export const App = () => {
       <div>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="movies" element={<MovieList />} />
+          <Route path="movies" element={<Movies />} />
+          <Route path="movie/:id" element={<MovieCard />} />
           <Route path="actor/:id" element={<ActorCart />} />
           <Route path="serial/:id" element={<SerialCard />} />
           <Route path="actors" element={<Actors />} />
