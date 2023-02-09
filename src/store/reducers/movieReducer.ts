@@ -32,19 +32,7 @@ export const movieListReducer = (
   }
 };
 
-// const initialItemState: MovieItemState = {
-//   movie: {
-//     // id: 0,
-//     // poster_path: "",
-//     // release_date: "",
-//     // vote_average: 0,
-//     // genres: [],
-//     // original_title: "",
-//     // overview: "",
-//   },
-//   error: "",
-//   loading: false,
-// };
+
 export const movieItemReducer = (
   state = { movie: {} },
   action: MovieItemAction
@@ -60,6 +48,7 @@ export const movieItemReducer = (
       return {
         ...state,
         movie: action.payload,
+        loading:false
       };
     case FETCH_MOVIE_ITEM_ERROR:
       return { ...state, error: action.payload.error };

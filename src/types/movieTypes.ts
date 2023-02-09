@@ -16,7 +16,8 @@ export interface IMovie {
   genres: IGenge[];
   original_title: string;
   overview: string;
-  poster_path:string
+  poster_path:string, 
+  title:string
 }
 
 export interface IGenge {
