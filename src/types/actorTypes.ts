@@ -30,7 +30,7 @@ interface ActorActionListRequest {
   type: typeof FETCH_ACTOR_LIST_REQUEST;
 }
 interface ActorActionListSuccess {
-  type: typeof FETCH_ACTOR_ITEM_SUCCESS;
+  type: typeof FETCH_ACTOR_LIST_SUCCESS;
   payload: {
     actors: IActor[];
     pages: number;
