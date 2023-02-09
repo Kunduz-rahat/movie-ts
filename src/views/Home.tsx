@@ -9,21 +9,19 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Link } from "react-router-dom";
 
-export const Movie: React.FC = () => {
+export const Home: React.FC = () => {
   SwiperCore.use([Autoplay]);
-  const [page, setPage] = useState(2);
-  const [dataLength, setDataLength] = useState(20);
-  const [hasMore, setHasMore] = useState(true);
+
 
   const dispatch = useDispatch();
 
   const movieList = useSelector((state: RootState) => state.movieList);
-  const { loading, movies, results, pages } = movieList;
+  const { loading, movies } = movieList;
 
   useEffect(() => {
     dispatch<any>(fetchMovies());
   }, [dispatch]);
-
+if(loading) return <h1>Загрузка..</h1>
   return (
     <Swiper
       pagination={{
