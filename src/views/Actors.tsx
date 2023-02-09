@@ -26,6 +26,7 @@ export const Actors: React.FC = () => {
                 />
                 <h3>{actor.name}</h3>
                 <p>{actor.birthday}</p>
+							
               </Link>
             </div>
           )
