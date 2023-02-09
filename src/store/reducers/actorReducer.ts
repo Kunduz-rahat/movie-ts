@@ -1,5 +1,5 @@
 import {
-	ActorItemActionTypes,
+  ActorItemActionTypes,
   ActorListActionTypes,
   FETCH_ACTOR_ITEM_ERROR,
   FETCH_ACTOR_ITEM_REQUEST,
@@ -32,7 +32,6 @@ export const actorListReducer = (
   }
 };
 
-
 export const actorItemReducer = (
   state = { actor: {} },
   action: ActorItemActionTypes
@@ -48,7 +47,7 @@ export const actorItemReducer = (
       return {
         ...state,
         actor: action.payload,
-        loading:false
+        loading: false,
       };
     case FETCH_ACTOR_ITEM_ERROR:
       return { ...state, error: action.payload.error };
