@@ -3,11 +3,10 @@ export const FETCH_SERIAL_LIST_REQUEST = "FETCH_SERIAL_LIST_REQUEST",
   FETCH_SERIAL_LIST_ERROR = "FETCH_SERIAL_LIST_ERROR",
   FETCH_SERIAL_ITEM_REQUEST = "FETCH_SERIAL_ITEM_REQUEST",
   FETCH_SERIAL_ITEM_SUCCESS = "FETCH_SERIAL_ITEM_SUCCESS",
-  FETCH_SERIAL_ITEM_ERROR = "FETCH_SERIAL_ITEM_ERROR";
+  FETCH_SERIAL_ITEM_ERROR = "FETCH_SERIAL_ITEM_ERROR",
+  SEARCH_SERIAL_LIST = "SEARCH_SERIAL_LIST";
 
-
-	// Serial Interface 
-
+// Serial Interface
 
 export interface ISerial {
   id: number;
@@ -17,7 +16,7 @@ export interface ISerial {
   first_air_date: string;
   vote_average: number;
   genres: IGenre[];
-	backdrop_path:string
+  backdrop_path: string;
 }
 
 export interface IGenre {
@@ -53,10 +52,20 @@ export interface SerialActionListError {
     error: string;
   };
 }
+interface SerialActionListSearch {
+  type: typeof SEARCH_SERIAL_LIST;
+  payload: {
+    serials: ISerial[];
+    pages: number;
+    results: number;
+    query: string;
+  };
+}
 export type SerialListActionTypes =
   | SerialActionListError
   | SerialActionListRequest
-  | SerialActionListSuccess;
+  | SerialActionListSuccess
+  | SerialActionListSearch;
 
 //Serial Item
 

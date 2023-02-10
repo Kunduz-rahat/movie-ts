@@ -7,6 +7,7 @@ import {
   FETCH_ACTOR_LIST_ERROR,
   FETCH_ACTOR_LIST_REQUEST,
   FETCH_ACTOR_LIST_SUCCESS,
+  SEARCH_ACTOR_LIST,
 } from "../../types/actorTypes";
 
 export const actorListReducer = (
@@ -26,7 +27,16 @@ export const actorListReducer = (
       return { ...state, error: action.payload.error };
     case FETCH_ACTOR_LIST_REQUEST:
       return { ...state, loading: true };
-
+      case SEARCH_ACTOR_LIST: {
+        return {
+          ...state,
+          loading: false,
+          actors: action.payload.actors,
+          pages: action.payload.pages,
+          results: action.payload.results,
+          query: action.payload.query,
+        };
+      }
     default:
       return state;
   }

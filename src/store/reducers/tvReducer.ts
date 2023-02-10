@@ -5,6 +5,7 @@ import {
   FETCH_SERIAL_LIST_ERROR,
   FETCH_SERIAL_LIST_REQUEST,
   FETCH_SERIAL_LIST_SUCCESS,
+  SEARCH_SERIAL_LIST,
   SerialItemActionTypes,
   SerialListActionTypes,
 } from "../../types/tvTypes";
@@ -26,7 +27,16 @@ export const serialListReducer = (
       return { ...state, error: action.payload.error };
     case FETCH_SERIAL_LIST_REQUEST:
       return { ...state, loading: true };
-
+    case SEARCH_SERIAL_LIST: {
+      return {
+        ...state,
+        loading: false,
+        serials: action.payload.serials,
+        pages: action.payload.pages,
+        results: action.payload.results,
+        query: action.payload.query,
+      };
+    }
     default:
       return state;
   }

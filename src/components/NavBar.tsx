@@ -30,23 +30,7 @@ export const NavBar = () => {
             </NavLink>
           </li>
         </ul>
-        <form className="flex bg-gray-50  rounded-lg" >
-          
-            <input
-              type="search"
-              id="default-search"
-              className="    focus:ring-blue-500 focus:border-blue-500 outline-none pl-2 rounded-lg"
-              placeholder="Search ..."
-              required
-            />
-            <button
-              type="submit"
-              className="text-white  bg-red-500 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 "
-            >
-              Search
-            </button>
-          
-        </form>
+       
       </div>
     </nav>
   );

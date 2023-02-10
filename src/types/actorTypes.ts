@@ -1,11 +1,12 @@
 export const FETCH_ACTOR_LIST_REQUEST = "FETCH_ACTOR_LIST_REQUEST",
   FETCH_ACTOR_LIST_SUCCESS = "FETCH_ACTOR_LIST_SUCCESS",
   FETCH_ACTOR_LIST_ERROR = "FETCH_ACTOR_LIST_ERROR",
-	FETCH_ACTOR_ITEM_REQUEST = "FETCH_ACTOR_ITEM_REQUEST",
+  FETCH_ACTOR_ITEM_REQUEST = "FETCH_ACTOR_ITEM_REQUEST",
   FETCH_ACTOR_ITEM_SUCCESS = "FETCH_ACTOR_ITEM_SUCCESS",
-  FETCH_ACTOR_ITEM_ERROR = "FETCH_ACTOR_ITEM_ERROR";
+  FETCH_ACTOR_ITEM_ERROR = "FETCH_ACTOR_ITEM_ERROR",
+  SEARCH_ACTOR_LIST = "SEARCH_ACTOR_LIST";
 
- // Actor interface
+// Actor interface
 export interface IActor {
   id: number;
   name: string;
@@ -15,14 +16,13 @@ export interface IActor {
   place_of_birth: string;
 }
 
-// Actor List 
-
+// Actor List
 
 export type ActorListState = {
   actors: IActor[];
   loading: boolean;
   query: string;
- 	error:string;
+  error: string;
   pages: number;
   results: number;
 };
@@ -43,16 +43,27 @@ export interface ActorActionListError {
     error: string;
   };
 }
-export type ActorListActionTypes = ActorActionListError | ActorActionListRequest |ActorActionListSuccess
- 
+interface ActorActionListSearch {
+  type: typeof SEARCH_ACTOR_LIST;
+  payload: {
+    actors: IActor[];
+    pages: number;
+    results: number;
+    query: string;
+  };
+}
+export type ActorListActionTypes =
+  | ActorActionListError
+  | ActorActionListRequest
+  | ActorActionListSuccess
+  | ActorActionListSearch;
 
- // Actor Item
-
+// Actor Item
 
 export type ActorItemState = {
   actor: IActor;
   loading: boolean;
-	error:string
+  error: string;
 };
 interface ActorItemActionRequest {
   type: typeof FETCH_ACTOR_ITEM_REQUEST;
@@ -60,11 +71,12 @@ interface ActorItemActionRequest {
 interface ActorItemActionSuccess {
   type: typeof FETCH_ACTOR_ITEM_SUCCESS;
   payload: IActor;
-
 }
 interface ActorItemActionError {
   type: typeof FETCH_ACTOR_ITEM_ERROR;
-	payload: { error: string };
-	
+  payload: { error: string };
 }
-export type ActorItemActionTypes = ActorItemActionError| ActorItemActionSuccess | ActorItemActionRequest;
+export type ActorItemActionTypes =
+  | ActorItemActionError
+  | ActorItemActionSuccess
+  | ActorItemActionRequest;
