@@ -1,6 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { MovieList } from "./components/MovieList";
 import { NavBar } from "./components/NavBar";
 import { Home } from "./views/Home";
 import { Actors } from "./views/Actors";
@@ -9,6 +8,7 @@ import { Serials } from "./views/Serials";
 import { SerialCard } from "./components/SerialCard";
 import { Movies } from "./views/Movies";
 import { MovieCard } from "./components/MovieCard";
+import { Footer } from "./components/Footer";
 
 export const App = () => {
   return (
@@ -26,6 +26,7 @@ export const App = () => {
           <Route path="serials" element={<Serials />} />
         </Routes>
       </div>
+      <Footer/>
     </BrowserRouter>
 
     //  </Layout>

@@ -1,7 +1,8 @@
-import { type } from "os";
 import React, { FC, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
+import Moment from "react-moment";
+import { Carousel } from "@trendyol-js/react-carousel";
 import { fetchItemMovie } from "../store/actions/movieItemActions";
 import { RootState } from "../types/rootTypes";
 
@@ -49,6 +50,18 @@ export const MovieCard: FC = () => {
                 <span key={genre.id}>{genre.name} </span>
               ))}
             <p className="text-xl mb-12 italic">{movie.overview}</p>
+            <Moment format="MMM D, YYYY">{movie.release_date}</Moment>
+            <Carousel show={4} slide={3} swiping={true}>
+              {/* <Highlight color="#2d66c3">We love Web 🌐</Highlight>
+    <Highlight color="#f44336">We love Developers 👩🏻‍</Highlight>
+    <a target="_blank" href="https://github.com/trendyol/">
+        <Highlight color="#d53f8c">This is our github</Highlight>
+    </a>
+    <a target="_blank" href="https://trendyol.com/">
+        <Highlight color="#f27a1a">This is our website</Highlight>
+    </a>
+    ... */}
+            </Carousel>
           </div>
         </div>
       </div>

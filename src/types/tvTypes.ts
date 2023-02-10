@@ -8,7 +8,7 @@ export const FETCH_SERIAL_LIST_REQUEST = "FETCH_SERIAL_LIST_REQUEST",
 
 	// Serial Interface 
 
-	
+
 export interface ISerial {
   id: number;
   name: string;
@@ -17,6 +17,7 @@ export interface ISerial {
   first_air_date: string;
   vote_average: number;
   genres: IGenre[];
+	backdrop_path:string
 }
 
 export interface IGenre {

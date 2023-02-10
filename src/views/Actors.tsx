@@ -14,19 +14,17 @@ export const Actors: React.FC = () => {
   }, [dispatch]);
   console.log(actors);
   return (
-    <div>
+    <div className="grid grid-cols-5 gap-4 p-5 ">
       {actors.map(
         (actor) =>
           actor.profile_path && (
-            <div key={actor.id}>
-              <Link to={`/actor/${actor.id}`}>
+            <div key={actor.id} className="rounded-lg">
+              <Link to={`/actor/${actor.id}`} className="hover:text-red-500">
                 <img
                   src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}
-                  alt={actor.name}
+                  alt={actor.name} className='rounded-3xl'
                 />
-                <h3>{actor.name}</h3>
-                <p>{actor.birthday}</p>
-							
+                <h3 >{actor.name}</h3>
               </Link>
             </div>
           )

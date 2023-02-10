@@ -12,7 +12,6 @@ import { Link } from "react-router-dom";
 export const Home: React.FC = () => {
   SwiperCore.use([Autoplay]);
 
-
   const dispatch = useDispatch();
 
   const movieList = useSelector((state: RootState) => state.movieList);
@@ -21,7 +20,7 @@ export const Home: React.FC = () => {
   useEffect(() => {
     dispatch<any>(fetchMovies());
   }, [dispatch]);
-if(loading) return <h1>Загрузка..</h1>
+  if (loading) return <h1>Загрузка..</h1>;
   return (
     <Swiper
       pagination={{
@@ -55,15 +54,14 @@ if(loading) return <h1>Загрузка..</h1>
                 <p className="text-xl mb-12 italic">{movie.overview}</p>
               </div>
               <div className="w-1/2 p-8 text-center flex mx-auto">
-            <Link to={`/movie/${movie.id}`}>
-                <img
-                  style={{ height: "500px" }}
-                  src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                  alt={movie.original_title}
-                  className="  object-cover rounded-xl "
-                />
+                <Link to={`/movie/${movie.id}`}>
+                  <img
+                    style={{ height: "500px" }}
+                    src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                    alt={movie.original_title}
+                    className="  object-cover rounded-xl "
+                  />
                 </Link>
-                
               </div>
             </div>
           </div>

@@ -3,9 +3,9 @@ import {  NavLink } from "react-router-dom";
 
 export const NavBar = () => {
   return (
-    <nav className="flex justify-between ">
+    <nav className="flex justify-between items-center ">
       <div className="px-5  py-6 flex w-full items-center">
-        <a className="text-3xl font-bold font-heading" href="/">
+        <a className="text-3xl font-bold font-heading hover:text-red-500 " href="/">
           Cinema Here!
         </a>
       </div>
