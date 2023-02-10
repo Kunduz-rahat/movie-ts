@@ -14,7 +14,7 @@ export const ActorCart = () => {
   useEffect(() => {
     dispatch<any>(fetchItemActor(+id));
   }, [dispatch, id]);
-
+console.log(actor)
   return (
     <div className="flex">
       <div className="w-full lg:w-1/3 p-8 text-center flex mx-auto">
