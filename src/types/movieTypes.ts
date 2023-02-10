@@ -5,7 +5,9 @@ export const FETCH_MOVIE_ITEM_REQUEST = "FETCH_MOVIE_ITEM_REQUEST",
   FETCH_MOVIE_ITEM_ERROR = "FETCH_MOVIE_ITEM_ERROR",
   FETCH_MOVIE_LIST_REQUEST = "FETCH_MOVIE_LIST_REQUEST",
   FETCH_MOVIE_LIST_SUCCESS = "FETCH_MOVIE_LIST_SUCCESS",
-  FETCH_MOVIE_LIST_ERROR = "FETCH_MOVIE_LIST_ERROR";
+  FETCH_MOVIE_LIST_ERROR = "FETCH_MOVIE_LIST_ERROR",
+  SEARCH_MOVIE_LIST = "SEARCH_MOVIE_LIST",
+  SEARCH_MOVIE_ITEM = "SEARCH_MOVIE_ITEM"
 
 
 export interface IMovie {
@@ -16,8 +18,8 @@ export interface IMovie {
   genres: IGenge[];
   original_title: string;
   overview: string;
-  poster_path:string, 
-  title:string
+  poster_path: string;
+  title: string;
 }
 
 export interface IGenge {
@@ -54,10 +56,21 @@ export interface MovieActionListSuccess {
   };
 }
 
+//Search Movie list
+interface MovieActionSearchList {
+  type: typeof SEARCH_MOVIE_LIST;
+  payload: {
+    movies: IMovie[];
+    pages: number;
+    results: number;
+    query: string;
+  };
+}
 export type MovieListAction =
   | MovieActionListError
   | MovieActionListSuccess
-  | MovieActionListRequest;
+  | MovieActionListRequest
+  | MovieActionSearchList;
 
 // Movie Item
 
@@ -67,14 +80,12 @@ export type MovieItemState = {
   loading: boolean;
 };
 
-
-
 export interface MovieItemActionError {
-  type:typeof FETCH_MOVIE_ITEM_ERROR;
+  type: typeof FETCH_MOVIE_ITEM_ERROR;
   payload: { error: string };
 }
 export interface MovieItemActionRequest {
-  type:typeof FETCH_MOVIE_ITEM_REQUEST;
+  type: typeof FETCH_MOVIE_ITEM_REQUEST;
 }
 export interface MovieItemActionSuccess {
   type: typeof FETCH_MOVIE_ITEM_SUCCESS;
