@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Search } from "../components/Search";
@@ -9,10 +9,13 @@ export const Movies: React.FC = () => {
   const dispatch = useDispatch();
 
   const movieList = useSelector((state: RootState) => state.movieList);
-  const { loading, movies } = movieList;
+  const { loading, movies, pages } = movieList;
   useEffect(() => {
     dispatch<any>(fetchMovies());
   }, [dispatch]);
+
+
+
   return (
     <div>
       <div className="flex justify-end pr-10">
