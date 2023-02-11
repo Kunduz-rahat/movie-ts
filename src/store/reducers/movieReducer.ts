@@ -8,6 +8,8 @@ import {
   FETCH_MOVIE_LIST_REQUEST,
   FETCH_MOVIE_LIST_SUCCESS,
   SEARCH_MOVIE_LIST,
+  ADD_MOVIE_LIST_REQUEST,
+  ADD_MOVIE_LIST_SUCCESS,
 } from "../../types/movieTypes";
 
 export const movieListReducer = (
@@ -37,6 +39,14 @@ export const movieListReducer = (
         query: action.payload.query,
       };
     }
+    case ADD_MOVIE_LIST_REQUEST:
+      return { ...state, nextLoading: true };
+    case ADD_MOVIE_LIST_SUCCESS:
+      return {
+        ...state,
+        nextLoading: false,
+        movies: [...state.movies, ...action.payload],
+      };
     default:
       return state;
   }

@@ -7,10 +7,8 @@ export const FETCH_MOVIE_ITEM_REQUEST = "FETCH_MOVIE_ITEM_REQUEST",
   FETCH_MOVIE_LIST_SUCCESS = "FETCH_MOVIE_LIST_SUCCESS",
   FETCH_MOVIE_LIST_ERROR = "FETCH_MOVIE_LIST_ERROR",
   SEARCH_MOVIE_LIST = "SEARCH_MOVIE_LIST",
-  ADD_MOVIE_LIST_SUCCESS = ' ADD_MOVIE_LIST_SUCCESS',
-  ADD_MOVIE_LIST_REQUEST = ' ADD_MOVIE_LIST_REQUEST'
-
-
+  ADD_MOVIE_LIST_SUCCESS = " ADD_MOVIE_LIST_SUCCESS",
+  ADD_MOVIE_LIST_REQUEST = " ADD_MOVIE_LIST_REQUEST";
 
 export interface IMovie {
   id: number;
@@ -70,18 +68,20 @@ interface MovieActionSearchList {
   };
 }
 
-interface MovieAction {
-	type: typeof ADD_MOVIES;
-	payload: IMovie[];
+interface MovieActionAddListSuccess {
+  type: typeof ADD_MOVIE_LIST_SUCCESS;
+  payload: IMovie[];
 }
-interface MovieListAddRequestAction {
-	type: typeof ADD_MOVIES_REQUEST;
+interface MovieActionAddListRequest {
+  type: typeof ADD_MOVIE_LIST_REQUEST;
 }
 export type MovieListAction =
   | MovieActionListError
   | MovieActionListSuccess
   | MovieActionListRequest
-  | MovieActionSearchList;
+  | MovieActionSearchList
+  | MovieActionAddListRequest
+  | MovieActionAddListSuccess;
 
 // Movie Item
 
