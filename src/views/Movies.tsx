@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Search } from "../components/Search";
-import { fetchMovies } from "../store/actions/movieListAction";
+import { addMovies, fetchMovies } from "../store/actions/movieListAction";
 import { RootState } from "../types/rootTypes";
 
 export const Movies: React.FC = () => {
@@ -11,21 +11,21 @@ export const Movies: React.FC = () => {
 	const [dataLength, setDataLength] = useState(20);
 	const [hasMore, setHasMore] = useState(true);
   const movieList = useSelector((state: RootState) => state.movieList);
-  const { loading, movies, pages } = movieList;
+  const { loading, movies, pages, query, nextLoading } = movieList;
   useEffect(() => {
     dispatch<any>(fetchMovies());
   }, [dispatch]);
 
-// const fetchNextPage = () => {
-// 		if (!query) {
-// 			dispatch(addMovies(page));
-// 			setPage(page + 1);
-// 			setDataLength(dataLength + 20);
-// 			if (page === pages) {
-// 				setHasMore(false);
-// 			}
-// 		}
-// 	};
+const fetchNextPage = () => {
+		if (!query) {
+			dispatch<any>(addMovies(page));
+			setPage(page + 1);
+			setDataLength(dataLength + 20);
+			if (page === pages) {
+				setHasMore(false);
+			}
+		}
+	};
 
   return (
     <div>
