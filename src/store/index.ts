@@ -4,6 +4,7 @@ import {composeWithDevTools} from "redux-devtools-extension";
 import {  movieItemReducer, movieListReducer } from "./reducers/movieReducer";
 import { actorItemReducer, actorListReducer } from "./reducers/actorReducer";
 import { serialItemReducer, serialListReducer } from "./reducers/tvReducer";
+import { trailerReducer } from "./reducers/trailerReducer";
 
 
 const rootReducer = combineReducers({
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
 	actorList:actorListReducer,
 	actorItem:actorItemReducer,
 	serialItem:serialItemReducer,
-	serialList:serialListReducer
+	serialList:serialListReducer,
+	trailerList:trailerReducer
 })
 
 const middleware = [thunk]
