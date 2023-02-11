@@ -32,7 +32,7 @@ export const Search: React.FC<Props> = (props) => {
 
   return (
     <form
-      className="flex bg-gray-50  rounded-3xl justify-center w-1/4"
+      className="flex bg-white rounded-3xl  w-1/4"
       onSubmit={handleSubmit}
     >
       <input
