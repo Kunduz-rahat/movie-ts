@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import Moment from "react-moment";
 import { Carousel } from "@trendyol-js/react-carousel";
-import { fetchItemMovie } from "../store/actions/movieItemActions";
+import { fetchItemMovie } from "../store/actions/movieItemAction";
 import { RootState } from "../types/rootTypes";
 
 export const MovieCard: FC = () => {

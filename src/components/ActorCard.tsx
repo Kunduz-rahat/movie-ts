@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Moment from "react-moment";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { fetchItemActor } from "../store/actions/actorItemReducer";
+import { fetchItemActor } from "../store/actions/actorItemAction";
 import { RootState } from "../types/rootTypes";
 
 export const ActorCart = () => {

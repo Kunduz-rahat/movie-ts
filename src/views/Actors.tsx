@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Search } from "../components/Search";
-import { fetchActors } from "../store/actions/actorListReducer";
+import { fetchActors } from "../store/actions/actorListAction";
 import { RootState } from "../types/rootTypes";
 
 export const Actors: React.FC = () => {
@@ -17,7 +17,7 @@ export const Actors: React.FC = () => {
   return (
     <div>
       <div className="flex justify-end pr-10">
-      <Search/>
+        <Search actors />
       </div>
 
       <div className="grid grid-cols-5 gap-4 p-5 ">

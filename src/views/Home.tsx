@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchMovies } from "../store/actions/movieListActions";
+import { fetchMovies } from "../store/actions/movieListAction";
 import { RootState } from "../types/rootTypes";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Autoplay } from "swiper";

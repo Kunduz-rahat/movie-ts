@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import Moment from 'react-moment';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { fetchItemSerial } from '../store/actions/serialItemReducer';
+import { fetchItemSerial } from '../store/actions/serialItemAction';
 import { RootState } from '../types/rootTypes';
 
 export const SerialCard:React.FC = () => {

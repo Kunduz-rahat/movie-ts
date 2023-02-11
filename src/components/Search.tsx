@@ -1,21 +1,55 @@
-import React from 'react'
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { searchActors } from "../store/actions/actorListAction";
+import { searchMovies } from "../store/actions/movieListAction";
+import { searchSerials } from "../store/actions/serialListAction";
 
-export const Search = () => {
-	return (
-	  <form className="flex bg-gray-50  rounded-3xl justify-end w-1/4">
-          <input
-            type="search"
-            id="default-search"
-            className="    focus:ring-blue-500 focus:border-blue-500 outline-none  rounded-3xl"
-            placeholder="Search actors"
-            required
-          />
-          <button
-            type="submit"
-            className="text-white  bg-red-500 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-3xl text-sm px-4 py-2 "
-          >
-            Search
-          </button>
-        </form>
-	)
-}
+type Props = {
+  movies?: boolean;
+  serials?: boolean;
+  actors?: boolean;
+};
+
+export const Search: React.FC<Props> = (props) => {
+  const [query, setQuery] = useState("");
+  const dispatch = useDispatch();
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (query !== "") {
+      if (props.movies) {
+        dispatch<any>(searchMovies(query));
+      } else if (props.serials) {
+        dispatch<any>(searchSerials(query));
+      } else {
+        dispatch<any>(searchActors(query));
+      }
+      setQuery("");
+    }
+  };
+  console.log(query);
+	console.log('render')
+
+  return (
+    <form
+      className="flex bg-gray-50  rounded-3xl justify-center w-1/4"
+      onSubmit={handleSubmit}
+    >
+      <input
+        type="text"
+        placeholder={
+          props.movies
+            ? "Search movies..."
+            : props.serials
+            ? "Search serials..."
+            : "Search actors..."
+        }
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        id="default-search"
+        className="outline-none  rounded-3xl p-2 text-black"
+        
+      />
+    </form>
+  );
+};
