@@ -8,6 +8,7 @@ import { addMovies, fetchMovies } from "../store/actions/movieListAction";
 import { RootState } from "../types/rootTypes";
 
 export const Movies: React.FC = () => {
+  
   const dispatch = useDispatch();
   const [page, setPage] = useState(2);
   const [dataLength, setDataLength] = useState(20);

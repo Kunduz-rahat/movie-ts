@@ -1,4 +1,6 @@
 import {
+  ADD_SERIAL_LIST_REQUEST,
+  ADD_SERIAL_LIST_SUCCESS,
   FETCH_SERIAL_ITEM_ERROR,
   FETCH_SERIAL_ITEM_REQUEST,
   FETCH_SERIAL_ITEM_SUCCESS,
@@ -37,6 +39,14 @@ export const serialListReducer = (
         query: action.payload.query,
       };
     }
+    case ADD_SERIAL_LIST_REQUEST:
+			return { ...state, nextLoading: true };
+		case ADD_SERIAL_LIST_SUCCESS:
+			return {
+				...state,
+				nextLoading: false,
+				serials: [...state.serials, ...action.payload],
+			};
     default:
       return state;
   }

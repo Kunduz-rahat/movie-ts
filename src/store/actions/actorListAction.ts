@@ -2,6 +2,8 @@ import axios from "axios";
 import apiConfig from "../../api/apiConfig.js";
 import { AppThunk } from "../../types/rootTypes";
 import {
+  ADD_ACTOR_LIST_REQUEST,
+  ADD_ACTOR_LIST_SUCCESS,
   FETCH_ACTOR_LIST_ERROR,
   FETCH_ACTOR_LIST_REQUEST,
   FETCH_ACTOR_LIST_SUCCESS,
@@ -45,5 +47,19 @@ export const searchActors =
         results: res.data.total_results,
         query: query,
       },
+    });
+  };
+
+export const addActors =
+  (page: number): AppThunk =>
+  async (dispatch) => {
+    dispatch({ type: ADD_ACTOR_LIST_REQUEST });
+
+    const res = await axios.get(
+      `${apiConfig.baseUrl}person/popular?api_key=${apiConfig.apiKey}&language=en-US&page=${page}`
+    );
+    dispatch({
+      type: ADD_ACTOR_LIST_SUCCESS,
+      payload: res.data.results,
     });
   };

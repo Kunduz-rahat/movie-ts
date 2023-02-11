@@ -2,6 +2,8 @@ import axios from "axios";
 import apiConfig from "../../api/apiConfig.js";
 import { AppThunk } from "../../types/rootTypes";
 import {
+  ADD_SERIAL_LIST_REQUEST,
+  ADD_SERIAL_LIST_SUCCESS,
   FETCH_SERIAL_LIST_ERROR,
   FETCH_SERIAL_LIST_REQUEST,
   FETCH_SERIAL_LIST_SUCCESS,
@@ -45,5 +47,19 @@ export const searchSerials =
         results: res.data.total_results,
         query: query,
       },
+    });
+  };
+
+export const addSerials =
+  (page: number): AppThunk =>
+  async (dispatch) => {
+    dispatch({ type: ADD_SERIAL_LIST_REQUEST });
+
+    const res = await axios.get(
+      `${apiConfig.baseUrl}tv/popular?api_key=${apiConfig.apiKey}&language=en-US&page=${page}`
+    );
+    dispatch({
+      type: ADD_SERIAL_LIST_SUCCESS,
+      payload: res.data.results,
     });
   };

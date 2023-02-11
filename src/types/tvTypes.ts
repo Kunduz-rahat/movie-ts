@@ -4,7 +4,9 @@ export const FETCH_SERIAL_LIST_REQUEST = "FETCH_SERIAL_LIST_REQUEST",
   FETCH_SERIAL_ITEM_REQUEST = "FETCH_SERIAL_ITEM_REQUEST",
   FETCH_SERIAL_ITEM_SUCCESS = "FETCH_SERIAL_ITEM_SUCCESS",
   FETCH_SERIAL_ITEM_ERROR = "FETCH_SERIAL_ITEM_ERROR",
-  SEARCH_SERIAL_LIST = "SEARCH_SERIAL_LIST";
+  SEARCH_SERIAL_LIST = "SEARCH_SERIAL_LIST",
+  ADD_SERIAL_LIST_SUCCESS = "ADD_SERIAL_LIST_SUCCESS",
+  ADD_SERIAL_LIST_REQUEST = "ADD_SERIAL_LIST_REQUEST";
 
 // Serial Interface
 
@@ -62,11 +64,21 @@ interface SerialActionListSearch {
     query: string;
   };
 }
+
+interface SerialActionAddListSuccess {
+  type: typeof ADD_SERIAL_LIST_SUCCESS;
+  payload: ISerial[];
+}
+interface SerialActionAddListRequest {
+  type: typeof ADD_SERIAL_LIST_REQUEST;
+}
 export type SerialListActionTypes =
   | SerialActionListError
   | SerialActionListRequest
   | SerialActionListSuccess
-  | SerialActionListSearch;
+  | SerialActionListSearch
+  | SerialActionAddListSuccess
+  | SerialActionAddListRequest;
 
 //Serial Item
 
