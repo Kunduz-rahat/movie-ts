@@ -24,7 +24,7 @@ console.log(actor)
         />
       </div>
       <div className="w-full  lg:w-2/3 p-5 items-start justify-center">
-        <h2>{actor.name}</h2>
+        <h2 className="text-5xl font-medium">{actor.name}</h2>
         <p>{actor.biography}</p>
 
         <Moment format="MMM D, YYYY">{actor.birthday}</Moment>

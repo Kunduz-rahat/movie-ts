@@ -1,6 +1,8 @@
 import {
   ActorItemActionTypes,
   ActorListActionTypes,
+  ADD_ACTOR_LIST_REQUEST,
+  ADD_ACTOR_LIST_SUCCESS,
   FETCH_ACTOR_ITEM_ERROR,
   FETCH_ACTOR_ITEM_REQUEST,
   FETCH_ACTOR_ITEM_SUCCESS,
@@ -27,16 +29,24 @@ export const actorListReducer = (
       return { ...state, error: action.payload.error };
     case FETCH_ACTOR_LIST_REQUEST:
       return { ...state, loading: true };
-      case SEARCH_ACTOR_LIST: {
-        return {
-          ...state,
-          loading: false,
-          actors: action.payload.actors,
-          pages: action.payload.pages,
-          results: action.payload.results,
-          query: action.payload.query,
-        };
-      }
+    case SEARCH_ACTOR_LIST: {
+      return {
+        ...state,
+        loading: false,
+        actors: action.payload.actors,
+        pages: action.payload.pages,
+        results: action.payload.results,
+        query: action.payload.query,
+      };
+    }
+    case ADD_ACTOR_LIST_REQUEST:
+      return { ...state, nextLoading: true };
+    case ADD_ACTOR_LIST_SUCCESS:
+      return {
+        ...state,
+        nextLoading: false,
+        actors: [...state.actors, ...action.payload],
+      };
     default:
       return state;
   }

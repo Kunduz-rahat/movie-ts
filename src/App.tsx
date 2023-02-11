@@ -8,7 +8,7 @@ import { Serials } from "./views/Serials";
 import { SerialCard } from "./components/SerialCard";
 import { Movies } from "./views/Movies";
 import { MovieCard } from "./components/MovieCard";
-import { Footer } from "./components/Footer";
+
 
 export const App = () => {
   return (
@@ -26,7 +26,7 @@ export const App = () => {
           <Route path="serials" element={<Serials />} />
         </Routes>
       </div>
-      <Footer/>
+      {/* <Footer/> */}
     </BrowserRouter>
 
     //  </Layout>

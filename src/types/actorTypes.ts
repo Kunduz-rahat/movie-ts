@@ -4,7 +4,9 @@ export const FETCH_ACTOR_LIST_REQUEST = "FETCH_ACTOR_LIST_REQUEST",
   FETCH_ACTOR_ITEM_REQUEST = "FETCH_ACTOR_ITEM_REQUEST",
   FETCH_ACTOR_ITEM_SUCCESS = "FETCH_ACTOR_ITEM_SUCCESS",
   FETCH_ACTOR_ITEM_ERROR = "FETCH_ACTOR_ITEM_ERROR",
-  SEARCH_ACTOR_LIST = "SEARCH_ACTOR_LIST";
+  SEARCH_ACTOR_LIST = "SEARCH_ACTOR_LIST",
+  ADD_ACTOR_LIST_SUCCESS = "ADD_ACTOR_LIST_SUCCESS",
+  ADD_ACTOR_LIST_REQUEST = "ADD_ACTOR_LIST_REQUEST";
 
 // Actor interface
 export interface IActor {
@@ -53,11 +55,20 @@ interface ActorActionListSearch {
     query: string;
   };
 }
+interface ActorActionListAddSuccess {
+  type: typeof ADD_ACTOR_LIST_SUCCESS;
+  payload: IActor[];
+}
+interface ActorActionListAddRequest {
+  type: typeof ADD_ACTOR_LIST_REQUEST;
+}
 export type ActorListActionTypes =
   | ActorActionListError
   | ActorActionListRequest
   | ActorActionListSuccess
-  | ActorActionListSearch;
+  | ActorActionListSearch
+  | ActorActionListAddRequest
+  | ActorActionListAddSuccess;
 
 // Actor Item
 
