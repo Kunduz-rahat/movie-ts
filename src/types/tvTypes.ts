@@ -33,6 +33,7 @@ export type SerialListState = {
   error: string;
   pages: number;
   results: number;
+  nextLoading: boolean;
 };
 interface SerialActionListRequest {
   type: typeof FETCH_SERIAL_LIST_REQUEST;

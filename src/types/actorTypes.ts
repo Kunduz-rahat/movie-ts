@@ -25,6 +25,7 @@ export type ActorListState = {
   error: string;
   pages: number;
   results: number;
+  nextLoading: boolean;
 };
 interface ActorActionListRequest {
   type: typeof FETCH_ACTOR_LIST_REQUEST;

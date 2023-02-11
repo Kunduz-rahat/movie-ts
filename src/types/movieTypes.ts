@@ -6,7 +6,9 @@ export const FETCH_MOVIE_ITEM_REQUEST = "FETCH_MOVIE_ITEM_REQUEST",
   FETCH_MOVIE_LIST_REQUEST = "FETCH_MOVIE_LIST_REQUEST",
   FETCH_MOVIE_LIST_SUCCESS = "FETCH_MOVIE_LIST_SUCCESS",
   FETCH_MOVIE_LIST_ERROR = "FETCH_MOVIE_LIST_ERROR",
-  SEARCH_MOVIE_LIST = "SEARCH_MOVIE_LIST"
+  SEARCH_MOVIE_LIST = "SEARCH_MOVIE_LIST",
+  ADD_MOVIE_LIST_SUCCESS = ' ADD_MOVIE_LIST_SUCCESS',
+  ADD_MOVIE_LIST_REQUEST = ' ADD_MOVIE_LIST_REQUEST'
 
 
 
@@ -35,6 +37,7 @@ export type MovieListState = {
   results: number;
   pages: number;
   query: string;
+  nextLoading: boolean;
 };
 
 export interface MovieActionListError {
@@ -65,6 +68,14 @@ interface MovieActionSearchList {
     results: number;
     query: string;
   };
+}
+
+interface MovieAction {
+	type: typeof ADD_MOVIES;
+	payload: IMovie[];
+}
+interface MovieListAddRequestAction {
+	type: typeof ADD_MOVIES_REQUEST;
 }
 export type MovieListAction =
   | MovieActionListError
