@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+
 import { Scrolling } from "../components/Scrolling";
 import { Search } from "../components/Search";
 import Spinner from "../components/Spinner";

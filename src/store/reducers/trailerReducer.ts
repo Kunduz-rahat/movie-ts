@@ -13,13 +13,13 @@ export const trailerReducer = (
     case FETCH_TRAILER_LIST_SUCCESS:
       return {
         ...state,
-        loading: false,
+        trailerLoading: false,
         trailers: action.payload.trailers,
       };
     case FETCH_TRAILER_LIST_ERROR:
       return { ...state, error: action.payload.error };
     case FETCH_TRAILER_LIST_REQUEST:
-      return { ...state, loading: true };
+      return { ...state, trailerLoading: true };
 
     default:
       return state;

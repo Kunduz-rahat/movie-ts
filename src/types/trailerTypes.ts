@@ -10,7 +10,7 @@ export interface ITrailer {
 
 export type TrailerListState = {
   trailers: ITrailer[];
-  loading: boolean;
+  trailerLoading: boolean;
   error: string;
 };
 

@@ -23,6 +23,6 @@ export const fetchTrailers = (id:any): AppThunk => async (dispatch) => {
 
   dispatch({
     type: FETCH_TRAILER_LIST_ERROR,
-    payload: { error: "Произошла ошибка при загрузке сериалов" },
+    payload: { error: "Произошла ошибка при загрузке трейлеров" },
   });
 };

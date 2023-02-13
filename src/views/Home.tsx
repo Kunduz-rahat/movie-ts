@@ -33,7 +33,7 @@ export const Home: React.FC = () => {
       slidesPerView={1}
     >
       {movies.map((movie) => (
-        <SwiperSlide className="h-full p-0">
+        <SwiperSlide className="h-full p-0" key={movie.id}>
           <div
             className=" mx-auto text-left text-white"
             style={{

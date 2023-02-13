@@ -1,10 +1,12 @@
-import React, { FC, useEffect } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import Moment from "react-moment";
-import { Carousel } from "@trendyol-js/react-carousel";
+import { Player } from "video-react";
+
 import { fetchItemMovie } from "../store/actions/movieItemAction";
 import { RootState } from "../types/rootTypes";
+import { fetchTrailers } from "../store/actions/trailerListAction";
 
 export const MovieCard: FC = () => {
   const { id }: any = useParams<{ id: string }>();
@@ -12,11 +14,17 @@ export const MovieCard: FC = () => {
 
   const movieItem = useSelector((state: RootState) => state.movieItem);
   const { loading, movie } = movieItem;
+  const trailerList = useSelector((state: RootState) => state.trailerList);
+  const { trailerLoading, trailers } = trailerList;
   useEffect(() => {
     dispatch<any>(fetchItemMovie(+id));
   }, [dispatch, id]);
 
-  if (loading) return <h2>Загрузка</h2>;
+  useEffect(() => {
+    dispatch<any>(fetchTrailers(id));
+  }, [dispatch, id]);
+  if (loading) return <h2>Загрузка фильма</h2>;
+  if (trailerLoading) return <h2>Загрузка трейлера</h2>;
   return (
     <div>
       <div
@@ -51,20 +59,24 @@ export const MovieCard: FC = () => {
               ))}
             <p className="text-xl mb-12 italic">{movie.overview}</p>
             <Moment format="MMM D, YYYY">{movie.release_date}</Moment>
-            <Carousel show={4} slide={3} swiping={true}>
-              {/* <Highlight color="#2d66c3">We love Web 🌐</Highlight>
-    <Highlight color="#f44336">We love Developers 👩🏻‍</Highlight>
-    <a target="_blank" href="https://github.com/trendyol/">
-        <Highlight color="#d53f8c">This is our github</Highlight>
-    </a>
-    <a target="_blank" href="https://trendyol.com/">
-        <Highlight color="#f27a1a">This is our website</Highlight>
-    </a>
-    ... */}
-            </Carousel>
           </div>
         </div>
       </div>
+      {trailers.map((trailer) => (
+        // <Player key={trailer.id}>
+        //   <source src={`https://www.youtube.com/watch?v=${trailer.key}`} type="video/mp4"/>
+        // </Player>
+        <iframe
+        src={`https://www.youtube.com/embed/${trailer.key}?enablejsapi=1&origin=http://127.0.0.1:5173/`}
+        title="trailer"
+        width="100%"
+        height="100%"
+        className="rounded-md"
+        allowFullScreen
+      />
+       
+      
+      ))}
     </div>
   );
 };
