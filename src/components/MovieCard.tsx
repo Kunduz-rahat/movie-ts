@@ -2,8 +2,6 @@ import React, { FC, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import Moment from "react-moment";
-import { Player } from "video-react";
-
 import { fetchItemMovie } from "../store/actions/movieItemAction";
 import { RootState } from "../types/rootTypes";
 import { fetchTrailers } from "../store/actions/trailerListAction";
@@ -16,6 +14,7 @@ export const MovieCard: FC = () => {
   const { loading, movie } = movieItem;
   const trailerList = useSelector((state: RootState) => state.trailerList);
   const { trailerLoading, trailers } = trailerList;
+  const youtubeVideos = trailers.slice(1, 2);
   useEffect(() => {
     dispatch<any>(fetchItemMovie(+id));
   }, [dispatch, id]);
@@ -62,21 +61,18 @@ export const MovieCard: FC = () => {
           </div>
         </div>
       </div>
-      {trailers.map((trailer) => (
-        // <Player key={trailer.id}>
-        //   <source src={`https://www.youtube.com/watch?v=${trailer.key}`} type="video/mp4"/>
-        // </Player>
-        <iframe
-        src={`https://www.youtube.com/embed/${trailer.key}?enablejsapi=1&origin=http://127.0.0.1:5173/`}
-        title="trailer"
-        width="100%"
-        height="100%"
-        className="rounded-md"
-        allowFullScreen
-      />
-       
-      
-      ))}
+      <div className="lg:h-[480px] md:h-[420px] sm:h-[320px] h-[210px] rounded-md mx-auto shadow-lg">
+        {youtubeVideos.map((trailer) => (
+          <iframe
+            src={`https://www.youtube.com/embed/${trailer.key}?enablejsapi=1&origin=http://127.0.0.1:5173/`}
+            title="trailer"
+            width="100%"
+            height="100%"
+            className="rounded-md"
+            allowFullScreen
+          />
+        ))}
+      </div>
     </div>
   );
 };
