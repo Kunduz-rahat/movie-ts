@@ -32,8 +32,8 @@ export const Home: React.FC = () => {
       spaceBetween={0}
       slidesPerView={1}
     >
-      {movies.map((movie) => (
-        <SwiperSlide className="h-full p-0" key={movie.id}>
+      {movies.map((movie, idx) => (
+        <SwiperSlide className="h-full p-0" key={idx}>
           <div
             className=" mx-auto text-left text-white"
             style={{

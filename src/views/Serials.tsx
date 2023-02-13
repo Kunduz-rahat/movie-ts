@@ -31,7 +31,7 @@ export const Serials: React.FC = () => {
       }
     }
   };
-
+if(loading) return <Spinner/>
   return (
     <div>
       <div className="flex justify-end pr-10">
@@ -48,9 +48,9 @@ export const Serials: React.FC = () => {
         >
           <div className="grid grid-cols-5 gap-4 p-5">
             {serials.map(
-              (serial) =>
+              (serial, idx) =>
                 serial.poster_path && (
-                  <div key={serial.id}>
+                  <div key={idx}>
                     <Link
                       to={`/serial/${serial.id}`}
                       className="hover:text-red-500"

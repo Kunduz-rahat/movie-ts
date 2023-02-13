@@ -46,9 +46,9 @@ export const Movies: React.FC = () => {
         >
           <div className="grid grid-cols-5 gap-4 p-5">
             {movies.map(
-              (movie) =>
+              (movie, idx) =>
                 movie.poster_path && (
-                  <div key={movie.id}>
+                  <div key={idx}>
                     <Link
                       to={`/movie/${movie.id}`}
                       className="hover:text-red-500"

@@ -1,10 +1,11 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Moment from "react-moment";
-import { fetchItemMovie } from "../store/actions/movieItemAction";
+import Spinner from "./Spinner";
 import { RootState } from "../types/rootTypes";
 import { fetchTrailers } from "../store/actions/trailerListAction";
+import { fetchItemMovie } from "../store/actions/movieItemAction";
 
 export const MovieCard: FC = () => {
   const { id }: any = useParams<{ id: string }>();
@@ -14,7 +15,7 @@ export const MovieCard: FC = () => {
   const { loading, movie } = movieItem;
   const trailerList = useSelector((state: RootState) => state.trailerList);
   const { trailerLoading, trailers } = trailerList;
-  const youtubeVideos = trailers.slice(1, 2);
+  const youtubeVideos = trailers.slice(0, 1);
   useEffect(() => {
     dispatch<any>(fetchItemMovie(+id));
   }, [dispatch, id]);
@@ -22,7 +23,7 @@ export const MovieCard: FC = () => {
   useEffect(() => {
     dispatch<any>(fetchTrailers(id));
   }, [dispatch, id]);
-  if (loading) return <h2>Загрузка фильма</h2>;
+  if (loading) return <Spinner />;
   if (trailerLoading) return <h2>Загрузка трейлера</h2>;
   return (
     <div>
@@ -53,8 +54,8 @@ export const MovieCard: FC = () => {
             </h2>
 
             {movie.genres &&
-              movie.genres.map((genre, id) => (
-                <span key={genre.id}>{genre.name} </span>
+              movie.genres.map((genre, idx) => (
+                <span key={idx}>{genre.name} </span>
               ))}
             <p className="text-xl mb-12 italic">{movie.overview}</p>
             <Moment format="MMM D, YYYY">{movie.release_date}</Moment>
@@ -62,8 +63,8 @@ export const MovieCard: FC = () => {
         </div>
       </div>
       <div className="lg:h-[480px] md:h-[420px] sm:h-[320px] h-[210px] rounded-md mx-auto shadow-lg">
-        {youtubeVideos.map((trailer) => (
-          <iframe
+        {youtubeVideos.map((trailer, idx) => (
+          <iframe key={idx}
             src={`https://www.youtube.com/embed/${trailer.key}?enablejsapi=1&origin=http://127.0.0.1:5173/`}
             title="trailer"
             width="100%"

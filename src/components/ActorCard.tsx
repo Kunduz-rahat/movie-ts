@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchItemActor } from "../store/actions/actorItemAction";
 import { RootState } from "../types/rootTypes";
+import Spinner from "./Spinner";
 
 export const ActorCart = () => {
   const { id }: any = useParams<{ id: string }>();
@@ -14,20 +15,23 @@ export const ActorCart = () => {
   useEffect(() => {
     dispatch<any>(fetchItemActor(+id));
   }, [dispatch, id]);
-console.log(actor)
+
+  if (loading) return <Spinner />;
   return (
     <div className="flex">
       <div className="w-full lg:w-1/3 p-8 text-center flex mx-auto">
         <img
           src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}
-          alt={actor.name} className='rounded-3xl'
+          alt={actor.name}
+          className="rounded-3xl"
         />
       </div>
       <div className="w-full  lg:w-2/3 p-5 items-start justify-center">
         <h2 className="text-5xl font-medium">{actor.name}</h2>
         <p>{actor.biography}</p>
-
-        <Moment format="MMM D, YYYY">{actor.birthday}</Moment>
+        {actor.birthday && (
+          <Moment format="MMM D, YYYY">{actor.birthday}</Moment>
+        )}
       </div>
     </div>
   );

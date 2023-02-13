@@ -45,9 +45,9 @@ export const Actors: React.FC = () => {
 				>
 					 <div className="grid grid-cols-5 gap-4 p-5 ">
         {actors.map(
-          (actor) =>
+          (actor, idx) =>
             actor.profile_path && (
-              <div key={actor.id} className="rounded-lg">
+              <div key={idx} className="rounded-lg">
                 <Link to={`/actor/${actor.id}`} className="hover:text-red-500">
                   <img
                     src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}

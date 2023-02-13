@@ -13,7 +13,7 @@ export const serialTrailerReducer = (
     case FETCH_TRAILER_SERIAL_LIST_SUCCESS:
       return {
         ...state,
-        trailerLoading: false,
+        serialTrailerLoading: false,
         trailers: action.payload.trailers,
       };
     case FETCH_TRAILER_SERIAL_LIST_ERROR:

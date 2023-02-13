@@ -27,7 +27,7 @@ export const Search: React.FC<Props> = (props) => {
       setQuery("");
     }
   };
-  console.log(query);
+
 	console.log('render')
 
   return (

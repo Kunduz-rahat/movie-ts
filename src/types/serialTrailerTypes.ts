@@ -3,14 +3,14 @@ export const FETCH_TRAILER_SERIAL_LIST_ERROR =
   FETCH_TRAILER_SERIAL_LIST_SUCCESS = "FETCH_TRAILER_SERIAL_LIST_SUCCESS",
   FETCH_TRAILER_SERIAL_LIST_REQUEST = "FETCH_TRAILER_SERIAL_LIST_REQUEST";
 
-export interface ITrailer {
+export interface ISerialTrailer {
   id: number;
   name: string;
   key: string;
 }
 
 export type TrailerSerialListState = {
-  trailers: ITrailer[];
+  trailers: ISerialTrailer[];
   serialTrailerLoading: boolean;
   error: string;
 };
@@ -21,7 +21,7 @@ interface SerialTrailerActionListRequest {
 interface SerialTrailerActionListSuccess {
   type: typeof FETCH_TRAILER_SERIAL_LIST_SUCCESS;
   payload: {
-    trailers: ITrailer[];
+    trailers: ISerialTrailer[];
   };
 }
 interface SerialTrailerActionListError {
