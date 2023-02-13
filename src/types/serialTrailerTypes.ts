@@ -11,7 +11,7 @@ export interface ITrailer {
 
 export type TrailerSerialListState = {
   trailers: ITrailer[];
-  trailerLoading: boolean;
+  serialTrailerLoading: boolean;
   error: string;
 };
 
