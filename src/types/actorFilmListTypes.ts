@@ -9,9 +9,9 @@ export interface IMovie {
 }
 
 //Actor Movie List
-export type MovieListState = {
+export type ActorMovieListState = {
   movies: IMovie[];
-  loading: boolean;
+  actorListLoading: boolean;
   error: string;
 };
 
