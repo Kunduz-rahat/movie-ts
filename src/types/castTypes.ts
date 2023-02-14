@@ -13,7 +13,7 @@ export interface IActor {
 
 export type CastListState = {
   actors: IActor[];
-  loading: boolean;
+  castLoading: boolean;
   error: string;
 };
 interface CastActionListRequest {
@@ -22,9 +22,7 @@ interface CastActionListRequest {
 interface CastActionListSuccess {
   type: typeof FETCH_CAST_LIST_SUCCESS;
   payload: {
-    actors: IActor[];
-    pages: number;
-    results: number;
+    cast: IActor[];
   };
 }
 export interface CastActionListError {
