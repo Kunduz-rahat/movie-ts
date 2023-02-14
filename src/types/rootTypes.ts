@@ -1,5 +1,7 @@
 import { Action } from "redux";
 import { ThunkAction } from "redux-thunk";
+import { ActorMovieListState } from "./actorFilmListTypes";
+import { ActorSerialListState } from "./actorSerialTypes";
 import { ActorItemState, ActorListState } from "./actorTypes";
 import { CastListState } from "./castTypes";
 import { MovieItemState, MovieListState } from "./movieTypes";
@@ -16,7 +18,9 @@ export interface RootState {
   serialItem:SerialItemState;
   trailerList:TrailerListState;
   serialTrailerList:TrailerSerialListState;
-  castList:CastListState
+  castList:CastListState,
+  actorMovieList:ActorMovieListState,
+  actorSerialList:ActorSerialListState
 }
 
 export type AppThunk<ReturnType = void> = ThunkAction<

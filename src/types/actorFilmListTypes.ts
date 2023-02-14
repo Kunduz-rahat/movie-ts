@@ -6,11 +6,12 @@ export interface IMovie {
   id: number;
   backdrop_path: string;
   poster_path: string;
+	original_title: string;
 }
 
 //Actor Movie List
 export type ActorMovieListState = {
-  movies: IMovie[];
+  cast: IMovie[];
   actorListLoading: boolean;
   error: string;
 };
@@ -28,7 +29,7 @@ export interface ActorMovieActionListRequest {
 export interface ActorMovieActionListSuccess {
   type: typeof FETCH_ACTOR_MOVIE_LIST_SUCCESS;
   payload: {
-    movies: IMovie[];
+    cast: IMovie[];
   };
 }
 

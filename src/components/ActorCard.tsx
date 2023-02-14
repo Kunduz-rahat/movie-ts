@@ -1,8 +1,11 @@
 import React, { useEffect } from "react";
 import Moment from "react-moment";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { Swiper, SwiperSlide } from "swiper/react";
+import SwiperCore, { Autoplay } from "swiper";
 import { fetchItemActor } from "../store/actions/actorItemAction";
+import { fetchActorMovieList } from "../store/actions/actorMovieListAction";
 import { RootState } from "../types/rootTypes";
 import Spinner from "./Spinner";
 
@@ -12,11 +15,20 @@ export const ActorCart = () => {
 
   const actorItem = useSelector((state: RootState) => state.actorItem);
   const { loading, actor } = actorItem;
+  const actorMovieList = useSelector((state: RootState) => state.actorMovieList);
+  const { actorListLoading, cast } = actorMovieList;
+  SwiperCore.use([Autoplay]);
+
   useEffect(() => {
     dispatch<any>(fetchItemActor(+id));
   }, [dispatch, id]);
 
+  useEffect(() => {
+    dispatch<any>(fetchActorMovieList(+id));
+  }, [dispatch, id])
+
   if (loading) return <Spinner />;
+  if(actorListLoading) return <h2>Загрузка</h2>
   return (
     <div className="flex">
       <div className="w-full lg:w-1/3 p-8 text-center flex mx-auto">
@@ -32,7 +44,31 @@ export const ActorCart = () => {
         {actor.birthday && (
           <Moment format="MMM D, YYYY">{actor.birthday}</Moment>
         )}
+          <Swiper
+              pagination={{
+                dynamicBullets: true,
+              }}
+              className="mySwiper"
+              modules={[Autoplay]}
+              grabCursor={true}
+              spaceBetween={0}
+              slidesPerView={6}
+            >
+              {cast.map((movie) => (
+                <SwiperSlide>
+                  <Link to={`/movie/${movie.id}`}>
+                    <img
+                      style={{ height: "200px" }}
+                      src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                      alt={movie.original_title}
+                      className="  object-cover rounded-xl "
+                    />
+                  </Link>
+                </SwiperSlide>
+              ))}
+            </Swiper>
       </div>
+     
     </div>
   );
 };

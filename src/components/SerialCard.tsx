@@ -1,12 +1,14 @@
 import React, { useEffect } from "react";
 import Moment from "react-moment";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { fetchItemSerial } from "../store/actions/serialItemAction";
 import { fetchSerialTrailers } from "../store/actions/serialTrailerListAction";
 import { RootState } from "../types/rootTypes";
 import Spinner from "./Spinner";
-
+import { Swiper, SwiperSlide } from "swiper/react";
+import SwiperCore, { Autoplay } from "swiper";
+import { fetchCastSerial } from "../store/actions/castSerialListAction";
 export const SerialCard: React.FC = () => {
   const { id }: any = useParams<{ id: string }>();
   const dispatch = useDispatch();
@@ -18,6 +20,8 @@ export const SerialCard: React.FC = () => {
   );
   const { serialTrailerLoading, trailers } = serialTrailerList;
   const youtubeVideos = trailers.slice(0, 1);
+  const actorSerialList = useSelector((state: RootState) => state.actorSerialList);
+  const {actorSerialLoading, cast } = actorSerialList;
   useEffect(() => {
     dispatch<any>(fetchItemSerial(+id));
   }, [dispatch, id]);
@@ -25,9 +29,13 @@ export const SerialCard: React.FC = () => {
   useEffect(() => {
     dispatch<any>(fetchSerialTrailers(id));
   }, [dispatch, id]);
+  useEffect(() => {
+    dispatch<any>(fetchCastSerial(id));
+  }, [dispatch, id]);
 
   if (loading) return <Spinner />;
   if (serialTrailerLoading) return <h2>Загрузка трейлера</h2>;
+  if (actorSerialLoading) return <h2>Загрузка ...</h2>;
   return (
     <div>
       <div
@@ -60,6 +68,29 @@ export const SerialCard: React.FC = () => {
               ))}
             <p className="text-xl mb-12 italic">{serial.overview}</p>
             <Moment format="MMM D, YYYY">{serial.first_air_date}</Moment>
+            <Swiper
+              pagination={{
+                dynamicBullets: true,
+              }}
+              className="mySwiper"
+              modules={[Autoplay]}
+              grabCursor={true}
+              spaceBetween={0}
+              slidesPerView={6}
+            >
+              {cast.map((c) => (
+                <SwiperSlide>
+                  <Link to={`/actor/${c.id}`}>
+                    <img
+                      style={{ height: "200px" }}
+                      src={`https://image.tmdb.org/t/p/w500/${c.poster_path}`}
+                      alt={c.original_title}
+                      className="  object-cover rounded-xl "
+                    />
+                  </Link>
+                </SwiperSlide>
+              ))}
+            </Swiper>        
           </div>
         </div>
       </div>

@@ -1,11 +1,12 @@
 import {
   ActorMovieListAction,
   FETCH_ACTOR_MOVIE_LIST_ERROR,
+  FETCH_ACTOR_MOVIE_LIST_REQUEST,
   FETCH_ACTOR_MOVIE_LIST_SUCCESS,
 } from "../../types/actorFilmListTypes";
 
 export const actorMovieListReducer = (
-  state = { movies: [] },
+  state = { cast: [] },
   action: ActorMovieListAction
 ) => {
   switch (action.type) {
@@ -13,11 +14,11 @@ export const actorMovieListReducer = (
       return {
         ...state,
         actorListLoading: false,
-        movies: action.payload.movies,
+        cast: action.payload.cast,
       };
     case FETCH_ACTOR_MOVIE_LIST_ERROR:
       return { ...state, error: action.payload.error };
-    case "FETCH_ACTOR_MOVIE_LIST_REQUEST":
+    case FETCH_ACTOR_MOVIE_LIST_REQUEST:
       return { ...state, actorListLoading: true };
 
     default:
