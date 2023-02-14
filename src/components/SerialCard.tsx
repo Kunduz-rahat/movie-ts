@@ -17,7 +17,7 @@ export const SerialCard: React.FC = () => {
     (state: RootState) => state.serialTrailerList
   );
   const { serialTrailerLoading, trailers } = serialTrailerList;
-  // const youtubeVideos = trailers.slice(0, 1);
+  const youtubeVideos = trailers.slice(0, 1);
   useEffect(() => {
     dispatch<any>(fetchItemSerial(+id));
   }, [dispatch, id]);
@@ -64,7 +64,7 @@ export const SerialCard: React.FC = () => {
         </div>
       </div>
 
-      {trailers.map((trailer, idx) => (
+      {youtubeVideos.map((trailer, idx) => (
         <div className="lg:h-[480px] md:h-[420px] sm:h-[320px] h-[210px] rounded-md mx-auto shadow-lg" key={idx}>
           {trailer.key && (
             <iframe

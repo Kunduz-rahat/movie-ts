@@ -19,7 +19,7 @@ export const Actors: React.FC = () => {
   useEffect(() => {
     dispatch<any>(fetchActors());
   }, [dispatch]);
-  console.log(actors);
+
   const fetchNextPage = () => {
     if (!query) {
       dispatch<any>(addActors(page));
