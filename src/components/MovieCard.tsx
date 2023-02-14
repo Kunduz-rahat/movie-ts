@@ -1,11 +1,14 @@
 import React, { FC, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Moment from "react-moment";
+import { Swiper, SwiperSlide } from "swiper/react";
+import SwiperCore, { Autoplay } from "swiper";
 import Spinner from "./Spinner";
 import { RootState } from "../types/rootTypes";
 import { fetchTrailers } from "../store/actions/trailerListAction";
 import { fetchItemMovie } from "../store/actions/movieItemAction";
+import { fetchCast } from "../store/actions/castListAction";
 
 export const MovieCard: FC = () => {
   const { id }: any = useParams<{ id: string }>();
@@ -15,7 +18,11 @@ export const MovieCard: FC = () => {
   const { loading, movie } = movieItem;
   const trailerList = useSelector((state: RootState) => state.trailerList);
   const { trailerLoading, trailers } = trailerList;
+  const castList = useSelector((state: RootState) => state.castList);
+  const { castLoading, cast } = castList;
   const youtubeVideos = trailers.slice(0, 1);
+  SwiperCore.use([Autoplay]);
+
   useEffect(() => {
     dispatch<any>(fetchItemMovie(+id));
   }, [dispatch, id]);
@@ -23,8 +30,14 @@ export const MovieCard: FC = () => {
   useEffect(() => {
     dispatch<any>(fetchTrailers(id));
   }, [dispatch, id]);
+
+  useEffect(() => {
+    dispatch<any>(fetchCast(id));
+  }, [dispatch, id]);
+
   if (loading) return <Spinner />;
   if (trailerLoading) return <h2>Загрузка трейлера</h2>;
+  if (castLoading) return <h2>Загрузка </h2>;
   return (
     <div>
       <div
@@ -59,12 +72,36 @@ export const MovieCard: FC = () => {
               ))}
             <p className="text-xl mb-12 italic">{movie.overview}</p>
             <Moment format="MMM D, YYYY">{movie.release_date}</Moment>
+            <Swiper
+              pagination={{
+                dynamicBullets: true,
+              }}
+              className="mySwiper"
+              modules={[Autoplay]}
+              grabCursor={true}
+              spaceBetween={0}
+              slidesPerView={6}
+            >
+              {cast.map((c) => (
+                <SwiperSlide>
+                  <Link to={`/actor/${c.id}`}>
+                    <img
+                      style={{ height: "200px" }}
+                      src={`https://image.tmdb.org/t/p/w500/${c.profile_path}`}
+                      alt={c.name}
+                      className="  object-cover rounded-xl "
+                    />
+                  </Link>
+                </SwiperSlide>
+              ))}
+            </Swiper>
           </div>
         </div>
       </div>
       <div className="lg:h-[480px] md:h-[420px] sm:h-[320px] h-[210px] rounded-md mx-auto shadow-lg">
         {youtubeVideos.map((trailer, idx) => (
-          <iframe key={idx}
+          <iframe
+            key={idx}
             src={`https://www.youtube.com/embed/${trailer.key}?enablejsapi=1&origin=http://127.0.0.1:5173/`}
             title="trailer"
             width="100%"

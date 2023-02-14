@@ -1,12 +1,11 @@
 import axios from "axios";
 import apiConfig from "../../api/apiConfig.js";
 import { AppThunk } from "../../types/rootTypes";
-
 import {
   FETCH_CAST_LIST_ERROR,
   FETCH_CAST_LIST_REQUEST,
   FETCH_CAST_LIST_SUCCESS,
-} from "../../types/castTypes.js";
+} from "../../types/castTypes";
 
 export const fetchCast =
   (id: any): AppThunk =>
@@ -19,9 +18,7 @@ export const fetchCast =
     dispatch({
       type: FETCH_CAST_LIST_SUCCESS,
       payload: {
-        actors: res.data.results,
-        pages: res.data.total_pages,
-        results: res.data.total_results,
+        cast: res.data.cast,
       },
     });
 

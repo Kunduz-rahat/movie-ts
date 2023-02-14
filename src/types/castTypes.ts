@@ -7,12 +7,13 @@ export interface IActor {
   id: number;
   name: string;
   profile_path: string;
+  gender:number
 }
 
 // Cast List
 
 export type CastListState = {
-  actors: IActor[];
+  cast: IActor[];
   castLoading: boolean;
   error: string;
 };
