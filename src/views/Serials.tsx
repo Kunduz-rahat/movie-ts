@@ -33,8 +33,8 @@ export const Serials: React.FC = () => {
   };
 if(loading) return <Spinner/>
   return (
-    <div>
-      <div className="flex justify-end pr-10">
+    <div className="max-w-screen-xl mx-auto">
+      <div className="flex justify-end pr-10 ">
         <Search serials />
       </div>
 
@@ -46,14 +46,14 @@ if(loading) return <Spinner/>
           next={fetchNextPage}
           hasMore={!nextLoading && hasMore}
         >
-          <div className="grid grid-cols-5 gap-4 p-5">
+          <div className="grid grid-cols-1  lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-2 gap-4 p-5">
             {serials.map(
               (serial, idx) =>
                 serial.poster_path && (
                   <div key={idx}>
                     <Link
                       to={`/serial/${serial.id}`}
-                      className="hover:text-red-500"
+                      className="hover:text-my-red"
                     >
                       <img
                         src={`https://image.tmdb.org/t/p/w500/${serial.poster_path}`}

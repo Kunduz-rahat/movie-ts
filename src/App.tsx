@@ -10,13 +10,14 @@ import { Movies } from "./views/Movies";
 import { MovieCard } from "./components/MovieCard";
 
 
+
 export const App = () => {
   return (
     // <Layout>
-    <BrowserRouter>
+    <BrowserRouter >
       <NavBar />
-      <div>
-        <Routes>
+
+    <Routes>
           <Route path="/" element={<Home />} />
           <Route path="movies" element={<Movies />} />
           <Route path="movie/:id" element={<MovieCard />} />
@@ -25,7 +26,9 @@ export const App = () => {
           <Route path="actors" element={<Actors />} />
           <Route path="serials" element={<Serials />} />
         </Routes>
-      </div>
+  
+       
+      
       {/* <Footer/> */}
     </BrowserRouter>
 

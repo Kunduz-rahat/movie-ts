@@ -32,8 +32,8 @@ export const Movies: React.FC = () => {
   };
 
   return (
-    <div>
-      <div className="flex justify-end pr-10">
+    <div className="mx-auto max-w-screen-xl">
+      <div className="flex justify-end pr-10 ">
         <Search movies />
       </div>
       {loading ? (
@@ -51,7 +51,7 @@ export const Movies: React.FC = () => {
                   <div key={idx}>
                     <Link
                       to={`/movie/${movie.id}`}
-                      className="hover:text-red-500"
+                      className="hover:text-my-red"
                     >
                       <img
                         src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}

@@ -20,8 +20,8 @@ export const SerialCard: React.FC = () => {
   );
   const { serialTrailerLoading, trailers } = serialTrailerList;
   const youtubeVideos = trailers.slice(0, 1);
-  const actorSerialList = useSelector((state: RootState) => state.actorSerialList);
-  const {actorSerialLoading, cast } = actorSerialList;
+  const castSerialList = useSelector((state: RootState) => state.castSerialList);
+  const {actorSerialLoading, cast } = castSerialList;
   useEffect(() => {
     dispatch<any>(fetchItemSerial(+id));
   }, [dispatch, id]);
@@ -33,11 +33,10 @@ export const SerialCard: React.FC = () => {
     dispatch<any>(fetchCastSerial(id));
   }, [dispatch, id]);
 
-  if (loading) return <Spinner />;
-  if (serialTrailerLoading) return <h2>Загрузка трейлера</h2>;
-  if (actorSerialLoading) return <h2>Загрузка ...</h2>;
+  if (loading || serialTrailerLoading || actorSerialLoading) return <Spinner />;
+
   return (
-    <div>
+    <div className="mx-auto max-w-screen-xl">
       <div
         className=" mx-auto text-left text-white"
         style={{
@@ -83,7 +82,7 @@ export const SerialCard: React.FC = () => {
                   <Link to={`/actor/${c.id}`}>
                     <img
                       style={{ height: "200px" }}
-                      src={`https://image.tmdb.org/t/p/w500/${c.poster_path}`}
+                      src={`https://image.tmdb.org/t/p/w500/${c.profile_path}`}
                       alt={c.original_title}
                       className="  object-cover rounded-xl "
                     />

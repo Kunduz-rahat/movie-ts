@@ -27,10 +27,10 @@ export const ActorCart = () => {
     dispatch<any>(fetchActorMovieList(+id));
   }, [dispatch, id])
 
-  if (loading) return <Spinner />;
-  if(actorListLoading) return <h2>Загрузка</h2>
+  if (loading || actorListLoading)  return <Spinner />;
+
   return (
-    <div className="flex">
+    <div className="flex  mx-auto max-w-screen-lg">
       <div className="w-full lg:w-1/3 p-8 text-center flex mx-auto">
         <img
           src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}
@@ -51,8 +51,26 @@ export const ActorCart = () => {
               className="mySwiper"
               modules={[Autoplay]}
               grabCursor={true}
-              spaceBetween={0}
-              slidesPerView={6}
+             
+             
+              breakpoints={{
+                0:{
+                  slidesPerView:1,
+                  spaceBetween:10
+                },
+                480:{
+                  slidesPerView:2,
+                  spaceBetween:15
+                },
+                768:{
+                  slidesPerView:4,
+                  spaceBetween:18
+                },
+                1024:{
+                  slidesPerView:6,
+                  spaceBetween:20
+                }
+              }}
             >
               {cast.map((movie) => (
                 <SwiperSlide>

@@ -31,8 +31,8 @@ export const Actors: React.FC = () => {
     }
   };
   return (
-    <div>
-      <div className="flex justify-end pr-10">
+    <div className="mx-auto max-w-screen-xl">
+      <div className=" flex justify-end pr-10">
         <Search actors />
       </div>
       {loading ? (
@@ -48,7 +48,7 @@ export const Actors: React.FC = () => {
           (actor, idx) =>
             actor.profile_path && (
               <div key={idx} className="rounded-lg">
-                <Link to={`/actor/${actor.id}`} className="hover:text-red-500">
+                <Link to={`/actor/${actor.id}`} className="hover:text-my-red">
                   <img
                     src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}
                     alt={actor.name}
