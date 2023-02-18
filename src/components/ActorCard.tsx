@@ -30,49 +30,65 @@ export const ActorCart = () => {
   if (loading || actorListLoading)  return <Spinner />;
 
   return (
-    <div className="flex  mx-auto max-w-screen-lg">
-      <div className="w-full lg:w-1/3 p-8 text-center flex mx-auto">
-        <img
-          src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}
-          alt={actor.name}
-          className="rounded-3xl"
-        />
-      </div>
-      <div className="w-full  lg:w-2/3 p-5 items-start justify-center">
-        <h2 className="text-5xl font-medium">{actor.name}</h2>
-        <p>{actor.biography}</p>
-        {actor.birthday && (
-          <Moment format="MMM D, YYYY">{actor.birthday}</Moment>
-        )}
+    <div
+        className=" mx-auto text-left text-white "
+    
+      >
+        <div className=" mx-auto max-w-screen-xl">
+          <div className="lg:flex md:flex">
+            <div className="mow-full lg:w-1/4 md:w-1/3 p-8 text-center flex mx-auto justify-center">
+              <img
+                style={{ height: "350px" }}
+                src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}
+                alt={actor.name}
+                className="  object-cover rounded-xl "
+              />
+            </div>
+            <div className="w-full md:w-2/3 lg:w-3/4 p-5 items-start justify-center bg-opacity-0 ">
+              <div className="">
+                <div>
+                  <h2 className="text-5xl font-medium mb-6">{actor.name}</h2>
+                </div>
+
+                <div className="rounded-3xl border-white">
+                
+                  <p className="text-xl  italic">{actor.biography}</p>
+                  <Moment format="MMM D, YYYY">{actor.birthday}</Moment>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="pl-8 pr-8  mx-auto max-w-screen-xl">
+          {cast.length ?   <h2 className="italic text-2xl text-semibold m-3">Know for</h2> :""}
+        
           <Swiper
-              pagination={{
-                dynamicBullets: true,
-              }}
-              className="mySwiper"
-              modules={[Autoplay]}
-              grabCursor={true}
-             
-             
-              breakpoints={{
-                0:{
-                  slidesPerView:1,
-                  spaceBetween:10
-                },
-                480:{
-                  slidesPerView:2,
-                  spaceBetween:15
-                },
-                768:{
-                  slidesPerView:4,
-                  spaceBetween:18
-                },
-                1024:{
-                  slidesPerView:6,
-                  spaceBetween:20
-                }
-              }}
-            >
-              {cast.map((movie) => (
+            pagination={{
+              dynamicBullets: true,
+            }}
+            className="mySwiper "
+            modules={[Autoplay]}
+            grabCursor={true}
+            breakpoints={{
+              0: {
+                slidesPerView: 2,
+                spaceBetween: 10,
+              },
+              480: {
+                slidesPerView: 3,
+                spaceBetween: 15,
+              },
+              768: {
+                slidesPerView: 6,
+                spaceBetween: 18,
+              },
+              1024: {
+                slidesPerView: 8,
+                spaceBetween: 20,
+              },
+            }}
+          >
+           {cast.map((movie) => (
                 <SwiperSlide>
                   <Link to={`/movie/${movie.id}`}>
                     <img
@@ -84,9 +100,9 @@ export const ActorCart = () => {
                   </Link>
                 </SwiperSlide>
               ))}
-            </Swiper>
+          </Swiper>
+        </div>
+      
       </div>
-     
-    </div>
   );
 };
