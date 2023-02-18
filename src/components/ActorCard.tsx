@@ -36,7 +36,7 @@ export const ActorCart = () => {
       >
         <div className=" mx-auto max-w-screen-xl">
           <div className="lg:flex md:flex">
-            <div className="mow-full lg:w-1/4 md:w-1/3 p-8 text-center flex mx-auto justify-center">
+            <div className="w-full lg:w-1/4 md:w-1/3 p-8 text-center flex mx-auto justify-center">
               <img
                 style={{ height: "350px" }}
                 src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}
@@ -75,7 +75,7 @@ export const ActorCart = () => {
                 spaceBetween: 10,
               },
               480: {
-                slidesPerView: 3,
+                slidesPerView: 4,
                 spaceBetween: 15,
               },
               768: {
