@@ -1,5 +1,5 @@
 import React from "react";
-import InfiniteScroll from 'react-infinite-scroll-component'
+import InfiniteScroll from "react-infinite-scroll-component";
 
 type Props = {
   dataLength: number;

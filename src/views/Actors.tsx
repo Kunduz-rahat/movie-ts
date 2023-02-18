@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { addActors, fetchActors } from "../store/actions/actorListAction";
+import { RootState } from "../types/rootTypes";
 import { Scrolling } from "../components/Scrolling";
 import { Search } from "../components/Search";
 import Spinner from "../components/Spinner";
-import { addActors, fetchActors } from "../store/actions/actorListAction";
-import { RootState } from "../types/rootTypes";
 
 export const Actors: React.FC = () => {
   const [page, setPage] = useState(2);

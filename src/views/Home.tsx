@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchMovies } from "../store/actions/movieListAction";
-import { RootState } from "../types/rootTypes";
+import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Autoplay } from "swiper";
-
 import "swiper/css";
 import "swiper/css/pagination";
-import { Link } from "react-router-dom";
+import { fetchMovies } from "../store/actions/movieListAction";
+import { RootState } from "../types/rootTypes";
 import Spinner from "../components/Spinner";
 
 export const Home: React.FC = () => {
@@ -15,13 +14,17 @@ export const Home: React.FC = () => {
 
   const dispatch = useDispatch();
 
+  // Get movie list
+  
   const movieList = useSelector((state: RootState) => state.movieList);
   const { loading, movies } = movieList;
 
   useEffect(() => {
     dispatch<any>(fetchMovies());
   }, [dispatch]);
+
   if (loading) return <Spinner/>
+
   return (
     <div className="bg-gradient-to-r from-sky-500 to-indigo-500 ">
       <Swiper

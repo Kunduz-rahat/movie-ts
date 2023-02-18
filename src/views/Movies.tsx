@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-
+import { addMovies, fetchMovies } from "../store/actions/movieListAction";
+import { RootState } from "../types/rootTypes";
 import { Scrolling } from "../components/Scrolling";
 import { Search } from "../components/Search";
 import Spinner from "../components/Spinner";
-import { addMovies, fetchMovies } from "../store/actions/movieListAction";
-import { RootState } from "../types/rootTypes";
 
 export const Movies: React.FC = () => {
   
@@ -14,8 +13,12 @@ export const Movies: React.FC = () => {
   const [page, setPage] = useState(2);
   const [dataLength, setDataLength] = useState(20);
   const [hasMore, setHasMore] = useState(true);
+
+  //Get movies
+
   const movieList = useSelector((state: RootState) => state.movieList);
   const { loading, movies, pages, query, nextLoading, results } = movieList;
+  
   useEffect(() => {
     dispatch<any>(fetchMovies());
   }, [dispatch]);

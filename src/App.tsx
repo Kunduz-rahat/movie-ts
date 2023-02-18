@@ -1,38 +1,29 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { NavBar } from "./components/NavBar";
+
 import { Home } from "./views/Home";
 import { Actors } from "./views/Actors";
-import { ActorCart } from "./components/ActorCard";
 import { Serials } from "./views/Serials";
-import { SerialCard } from "./components/SerialCard";
 import { Movies } from "./views/Movies";
+import { ActorCart } from "./components/ActorCard";
+import { NavBar } from "./components/NavBar";
+import { SerialCard } from "./components/SerialCard";
 import { MovieCard } from "./components/MovieCard";
-
-
 
 export const App = () => {
   return (
-    // <Layout>
-    <BrowserRouter >
+    <BrowserRouter>
       <NavBar />
-
-    <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="movies" element={<Movies />} />
-          <Route path="movie/:id" element={<MovieCard />} />
-          <Route path="actor/:id" element={<ActorCart />} />
-          <Route path="serial/:id" element={<SerialCard />} />
-          <Route path="actors" element={<Actors />} />
-          <Route path="serials" element={<Serials />} />
-        </Routes>
-  
-       
-      
-      {/* <Footer/> */}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="movies" element={<Movies />} />
+        <Route path="movie/:id" element={<MovieCard />} />
+        <Route path="actor/:id" element={<ActorCart />} />
+        <Route path="serial/:id" element={<SerialCard />} />
+        <Route path="actors" element={<Actors />} />
+        <Route path="serials" element={<Serials />} />
+      </Routes>
     </BrowserRouter>
-
-    //  </Layout>
   );
 };
 

@@ -1,29 +1,37 @@
-import React, { FC, useCallback, useEffect, useState } from "react";
+import React, { FC,  useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import Moment from "react-moment";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Autoplay } from "swiper";
-import Spinner from "./Spinner";
-import { RootState } from "../types/rootTypes";
 import { fetchTrailers } from "../store/actions/trailerListAction";
 import { fetchItemMovie } from "../store/actions/movieItemAction";
 import { fetchCast } from "../store/actions/castListAction";
+import { RootState } from "../types/rootTypes";
+import Spinner from "./Spinner";
 
-export const MovieCard: FC = () => {
+export const MovieCard: React.FC = () => {
   const { id }: any = useParams<{ id: string }>();
   const dispatch = useDispatch();
 
+  // Get movie item
+
   const movieItem = useSelector((state: RootState) => state.movieItem);
   const { loading, movie } = movieItem;
+
+  // Get movie trailer
+
   const trailerList = useSelector((state: RootState) => state.trailerList);
   const { trailerLoading, trailers } = trailerList;
+
+  // Get cast list
+
   const castList = useSelector((state: RootState) => state.castList);
   const { castLoading, cast } = castList;
   const youtubeVideos = trailers.slice(0, 1);
 
   SwiperCore.use([Autoplay]);
-  // console.log(movie.overview.length);
+
   useEffect(() => {
     dispatch<any>(fetchItemMovie(+id));
   }, [dispatch, id]);
@@ -39,6 +47,7 @@ export const MovieCard: FC = () => {
   if (loading || trailerLoading || castLoading) {
     return <Spinner />;
   }
+
   return (
     <div>
       <div

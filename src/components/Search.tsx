@@ -32,7 +32,7 @@ export const Search: React.FC<Props> = (props) => {
 
   return (
     <form
-      className="flex bg-white rounded-3xl  w-1/4"
+      className="flex bg-my-red rounded-3xl  w-2/3 max-w-screen-xl mx-auto mt-3"
       onSubmit={handleSubmit}
     >
       <input
@@ -47,7 +47,7 @@ export const Search: React.FC<Props> = (props) => {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         id="default-search"
-        className="outline-none  rounded-3xl p-2 text-black"
+        className="outline-none  rounded-3xl p-2 text-white bg-my-red hover:shadow-3xl"
         
       />
     </form>

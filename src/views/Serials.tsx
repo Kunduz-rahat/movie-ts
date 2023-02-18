@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import Moment from "react-moment";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { addSerials, fetchSerials } from "../store/actions/serialListAction";
+import { RootState } from "../types/rootTypes";
 import { Scrolling } from "../components/Scrolling";
 import { Search } from "../components/Search";
 import Spinner from "../components/Spinner";
-import { addSerials, fetchSerials } from "../store/actions/serialListAction";
-import { RootState } from "../types/rootTypes";
 
 export const Serials: React.FC = () => {
   const [page, setPage] = useState(2);
@@ -15,8 +15,11 @@ export const Serials: React.FC = () => {
 
   const dispatch = useDispatch();
 
+  // Get serails
+
   const serialList = useSelector((state: RootState) => state.serialList);
   const { loading, serials, query, nextLoading, results, pages } = serialList;
+
   useEffect(() => {
     dispatch<any>(fetchSerials());
   }, [dispatch]);
@@ -31,7 +34,9 @@ export const Serials: React.FC = () => {
       }
     }
   };
-if(loading) return <Spinner/>
+
+  if (loading) return <Spinner />;
+
   return (
     <div className="max-w-screen-xl mx-auto">
       <div className="flex justify-end pr-10 ">
@@ -46,7 +51,7 @@ if(loading) return <Spinner/>
           next={fetchNextPage}
           hasMore={!nextLoading && hasMore}
         >
-          <div className="grid grid-cols-1  lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-2 gap-4 p-5">
+          <div className="grid grid-cols-1  lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 gap-4 p-5">
             {serials.map(
               (serial, idx) =>
                 serial.poster_path && (

@@ -2,28 +2,41 @@ import React, { useEffect } from "react";
 import Moment from "react-moment";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
-import { fetchItemSerial } from "../store/actions/serialItemAction";
-import { fetchSerialTrailers } from "../store/actions/serialTrailerListAction";
-import { RootState } from "../types/rootTypes";
-import Spinner from "./Spinner";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Autoplay } from "swiper";
+import { fetchItemSerial } from "../store/actions/serialItemAction";
+import { fetchSerialTrailers } from "../store/actions/serialTrailerListAction";
 import { fetchCastSerial } from "../store/actions/castSerialListAction";
+import { RootState } from "../types/rootTypes";
+import Spinner from "./Spinner";
+
+
 export const SerialCard: React.FC = () => {
   const { id }: any = useParams<{ id: string }>();
   const dispatch = useDispatch();
 
+
+  // Get serial item
+
   const serialItem = useSelector((state: RootState) => state.serialItem);
   const { loading, serial } = serialItem;
+
+  // Get serial trailer list
+
   const serialTrailerList = useSelector(
     (state: RootState) => state.serialTrailerList
   );
   const { serialTrailerLoading, trailers } = serialTrailerList;
   const youtubeVideos = trailers.slice(0, 1);
+
+  // Get cast serial list
+
   const castSerialList = useSelector(
     (state: RootState) => state.castSerialList
   );
   const { actorSerialLoading, cast } = castSerialList;
+
+
   useEffect(() => {
     dispatch<any>(fetchItemSerial(+id));
   }, [dispatch, id]);
@@ -31,6 +44,7 @@ export const SerialCard: React.FC = () => {
   useEffect(() => {
     dispatch<any>(fetchSerialTrailers(id));
   }, [dispatch, id]);
+  
   useEffect(() => {
     dispatch<any>(fetchCastSerial(id));
   }, [dispatch, id]);
@@ -124,24 +138,26 @@ export const SerialCard: React.FC = () => {
           </Swiper>
         </div>
         <div className="lg:h-[480px] md:h-[420px] sm:h-[320px] h-[210px] rounded-md mx-auto shadow-lg mt-4 mx-auto max-w-screen-xl">
-        {youtubeVideos.map((trailer, idx) => (
-          trailer.key && (
-            <div className="lg:h-[480px] md:h-[420px] sm:h-[320px] h-[210px] rounded-md mx-auto shadow-lg" key={idx}>
-            {trailer.key && (
-              <iframe
-                src={`https://www.youtube.com/embed/${trailer.key}?enablejsapi=1&origin=http://127.0.0.1:5173/`}
-                title="trailer"
-                width="100%"
-                height="100%"
-                className="rounded-md"
-                allowFullScreen
-              />
-            )}
-          </div>
-          )
-       
-      ))
-      }
+          {youtubeVideos.map(
+            (trailer, idx) =>
+              trailer.key && (
+                <div
+                  className="lg:h-[480px] md:h-[420px] sm:h-[320px] h-[210px] rounded-md mx-auto shadow-lg"
+                  key={idx}
+                >
+                  {trailer.key && (
+                    <iframe
+                      src={`https://www.youtube.com/embed/${trailer.key}?enablejsapi=1&origin=http://127.0.0.1:5173/`}
+                      title="trailer"
+                      width="100%"
+                      height="100%"
+                      className="rounded-md"
+                      allowFullScreen
+                    />
+                  )}
+                </div>
+              )
+          )}
         </div>
       </div>
     </div>

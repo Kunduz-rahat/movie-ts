@@ -1,7 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../assets/play.png";
-export const NavBar = () => {
+
+export const NavBar:React.FC = () => {
   return (
     <div className="mx-auto max-w-screen-xl ">
       <nav className=" mx-auto bg-black  text-white  w-full   shadow p-4 flex justify-between items-center">
