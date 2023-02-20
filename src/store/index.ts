@@ -9,6 +9,7 @@ import { serialTrailerReducer } from "./reducers/serialTrailerReducer";
 import { castListReducer } from "./reducers/castReducer";
 import { actorMovieListReducer } from "./reducers/actorMovieListReducer";
 import {  castSerialListReducer } from "./reducers/castSerialListReducer";
+import { actorSerialListReducer } from "./reducers/actorSerialListReducer";
 
 
 const rootReducer = combineReducers({
@@ -22,7 +23,8 @@ const rootReducer = combineReducers({
 	serialTrailerList:serialTrailerReducer,
 	castList:castListReducer,
 	actorMovieList:actorMovieListReducer,
-	castSerialList:castSerialListReducer
+	castSerialList:castSerialListReducer,
+	actorSerialList:actorSerialListReducer
 })
 
 const middleware = [thunk]

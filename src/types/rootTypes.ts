@@ -8,6 +8,7 @@ import { MovieItemState, MovieListState } from "./movieTypes";
 import { TrailerSerialListState } from "./serialTrailerTypes";
 import { TrailerListState } from "./trailerTypes";
 import { SerialItemState, SerialListState } from "./tvTypes";
+import { ActorSerailListState } from "./actorSerialListTypes";
 
 export interface RootState {
   movieList: MovieListState;
@@ -20,7 +21,8 @@ export interface RootState {
   serialTrailerList:TrailerSerialListState;
   castList:CastListState,
   actorMovieList:ActorMovieListState,
-  castSerialList:CastSerialListState
+  castSerialList:CastSerialListState,
+  actorSerialList:ActorSerailListState
 }
 
 export type AppThunk<ReturnType = void> = ThunkAction<
