@@ -62,12 +62,12 @@ export const Home: React.FC = () => {
             >
               <div className="flex items-center mx-auto max-w-screen-xl ">
                 <div className=" p-5 items-center justify-center bg-opacity-0">
-                  <h1 className="lg:text-8xl text-4xl md:text-6xl font-medium mb-6 ">
+                  <h1 className="lg:text-8xl text-4xl md:text-6xl  mb-6 text-slate-300 font-semibold ">
                     {movie.original_title}
                   </h1>
                   <p className="text-xl">{movie.overview}</p>
                   <Link to={`/movie/${movie.id}`}>
-                    <button className=" mt-5 uppercase mx-auto tracking-2 hover:shadow-3xl bg-my-red  font-semibold spacing-2   focus:shadow-outline focus:outline-none text-white text-xl py-3 px-10 rounded-full">
+                    <button className=" mt-5 uppercase mx-auto tracking-2 hover:shadow-3xl bg-gradient-to-r from-[#02021c] to-[#0b1bc1] font-semibold spacing-2   focus:shadow-outline focus:outline-none text-white text-xl py-3 px-10 rounded-full">
                       Watch now
                     </button>
                   </Link>

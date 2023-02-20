@@ -16,6 +16,8 @@ export interface IActor {
   profile_path: string;
   birthday: string;
   place_of_birth: string;
+  known_for_department:string;
+  gender:number
 }
 
 // Actor List

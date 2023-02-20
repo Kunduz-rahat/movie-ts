@@ -1,4 +1,4 @@
-import React, { FC,  useEffect} from "react";
+import React, { FC, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import Moment from "react-moment";
@@ -9,7 +9,7 @@ import { fetchItemMovie } from "../store/actions/movieItemAction";
 import { fetchCast } from "../store/actions/castListAction";
 import { RootState } from "../types/rootTypes";
 import Spinner from "./Spinner";
-import NO_IMAGE from '../assets/image-not-found.png'
+import NO_IMAGE from "../assets/image-not-found.png";
 
 export const MovieCard: React.FC = () => {
   const { id }: any = useParams<{ id: string }>();
@@ -68,7 +68,7 @@ export const MovieCard: React.FC = () => {
             <div className="mow-full lg:w-1/4 md:w-1/3 p-8 text-center flex mx-auto justify-center">
               <img
                 style={{ height: "350px" }}
-                src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                src={movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : NO_IMAGE}
                 alt={movie.original_title}
                 className="  object-cover rounded-xl "
               />
@@ -76,7 +76,7 @@ export const MovieCard: React.FC = () => {
             <div className="w-full md:w-2/3 lg:w-3/4 p-5 items-start justify-center bg-opacity-0 ">
               <div className="">
                 <div>
-                  <h2 className="text-5xl font-medium mb-6">
+                  <h2 className="text-6xl  mb-6 text-transparent  bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 font-semibold">
                     {movie.original_title}
                   </h2>
                 </div>
@@ -128,7 +128,11 @@ export const MovieCard: React.FC = () => {
                 <Link to={`/actor/${c.id}`}>
                   <img
                     style={{ height: "200px" }}
-                    src={c.profile_path ?`https://image.tmdb.org/t/p/w500/${c.profile_path}` : NO_IMAGE}
+                    src={
+                      c.profile_path
+                        ? `https://image.tmdb.org/t/p/w500/${c.profile_path}`
+                        : NO_IMAGE
+                    }
                     alt={c.name}
                     className="  object-cover rounded-xl   "
                   />
@@ -137,19 +141,26 @@ export const MovieCard: React.FC = () => {
             ))}
           </Swiper>
         </div>
-        <div className="lg:h-[480px] md:h-[420px] sm:h-[320px] h-[210px] rounded-md mx-auto shadow-lg mt-4 mx-auto max-w-screen-xl">
-          {youtubeVideos.map((trailer, idx) => (
-            <iframe
-              key={idx}
-              src={`https://www.youtube.com/embed/${trailer.key}?enablejsapi=1&origin=http://127.0.0.1:5173/`}
-              title="trailer"
-              width="100%"
-              height="100%"
-              className="rounded-md"
-              allowFullScreen
-            />
-          ))}
-        </div>
+        {youtubeVideos.map(
+          (trailer, idx) =>
+            trailer.key && (
+              <div
+                className="lg:h-[480px] md:h-[420px] sm:h-[320px] h-[210px] rounded-md mx-auto mt-5 shadow-lg"
+                key={idx}
+              >
+                {trailer.key && (
+                  <iframe
+                    src={`https://www.youtube.com/embed/${trailer.key}?enablejsapi=1&origin=http://127.0.0.1:5173/`}
+                    title="trailer"
+                    width="100%"
+                    height="100%"
+                    className="rounded-md"
+                    allowFullScreen
+                  />
+                )}
+              </div>
+            )
+        )}
       </div>
     </div>
   );

@@ -15,7 +15,7 @@ module.exports = {
         "my-red":"#fb1909" 
       },
       boxShadow:{
-        "3xl" : "0px 0px 7px 15px #ff00004d"
+        "3xl" : "0px 0px 7px 8px #0b1bc1"
       },
       screens:{
         mobile:"480px"

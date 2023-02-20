@@ -6,9 +6,9 @@ import {
   FETCH_ACTOR_SERIAL_LIST_ERROR,
   FETCH_ACTOR_SERIAL_LIST_REQUEST,
   FETCH_ACTOR_SERIAL_LIST_SUCCESS,
-} from "../../types/actorSerialListTypes.js";
+} from "../../types/actorSerialListTypes";
 
-export const fetchActorMovieList =
+export const fetchActorSerialList =
   (id: any): AppThunk =>
   async (dispatch) => {
     dispatch({ type: FETCH_ACTOR_SERIAL_LIST_REQUEST });
@@ -19,7 +19,7 @@ export const fetchActorMovieList =
     dispatch({
       type: FETCH_ACTOR_SERIAL_LIST_SUCCESS,
       payload: {
-        cast: res.data.cast,
+        serials: res.data.cast,
       },
     });
 

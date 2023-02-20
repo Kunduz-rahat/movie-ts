@@ -9,11 +9,14 @@ import { ActorCart } from "./components/ActorCard";
 import { NavBar } from "./components/NavBar";
 import { SerialCard } from "./components/SerialCard";
 import { MovieCard } from "./components/MovieCard";
+import { Footer } from "./components/Footer";
+import { Layout } from "./components/Layout";
 
 export const App = () => {
   return (
     <BrowserRouter>
-      <NavBar />
+      {/* <NavBar /> */}
+      <Layout>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="movies" element={<Movies />} />
@@ -23,6 +26,9 @@ export const App = () => {
         <Route path="actors" element={<Actors />} />
         <Route path="serials" element={<Serials />} />
       </Routes>
+      </Layout>
+     
+      {/* <Footer/> */}
     </BrowserRouter>
   );
 };

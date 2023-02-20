@@ -78,7 +78,7 @@ export const SerialCard: React.FC = () => {
             <div className="w-full md:w-2/3 lg:w-3/4 p-5 items-start justify-center bg-opacity-0 ">
               <div className="">
                 <div>
-                  <h2 className="text-5xl font-medium mb-6">{serial.name}</h2>
+                  <h2 className="text-5xl font-medium mb-6 text-transparent  bg-clip-text bg-gradient-to-r from-purple-400 to-pink-800 " >{serial.name}</h2>
                 </div>
 
                 <div className="rounded-3xl border-white">
