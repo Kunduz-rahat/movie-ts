@@ -8,6 +8,7 @@ import { fetchItemActor } from "../store/actions/actorItemAction";
 import { fetchActorMovieList } from "../store/actions/actorMovieListAction";
 import { RootState } from "../types/rootTypes";
 import Spinner from "./Spinner";
+import NO_IMAGE from '../assets/image-not-found.png'
 
 export const ActorCart:React.FC = () => {
   const { id }: any = useParams<{ id: string }>();
@@ -44,7 +45,7 @@ export const ActorCart:React.FC = () => {
           <div className="w-full lg:w-1/4 md:w-1/3 p-8 text-center flex mx-auto justify-center">
             <img
               style={{ height: "350px" }}
-              src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}
+              src={actor.profile_path ?`https://image.tmdb.org/t/p/w500/${actor.profile_path}` : NO_IMAGE}
               alt={actor.name}
               className="  object-cover rounded-xl "
             />
@@ -67,7 +68,7 @@ export const ActorCart:React.FC = () => {
       </div>
       <div className="pl-8 pr-8  mx-auto max-w-screen-xl">
         {cast.length ? (
-          <h2 className="italic text-2xl text-semibold m-3">Know for</h2>
+          <h2 className="italic text-2xl text-semibold m-3">Known for</h2>
         ) : (
           ""
         )}

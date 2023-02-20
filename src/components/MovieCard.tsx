@@ -9,6 +9,7 @@ import { fetchItemMovie } from "../store/actions/movieItemAction";
 import { fetchCast } from "../store/actions/castListAction";
 import { RootState } from "../types/rootTypes";
 import Spinner from "./Spinner";
+import NO_IMAGE from '../assets/image-not-found.png'
 
 export const MovieCard: React.FC = () => {
   const { id }: any = useParams<{ id: string }>();
@@ -127,7 +128,7 @@ export const MovieCard: React.FC = () => {
                 <Link to={`/actor/${c.id}`}>
                   <img
                     style={{ height: "200px" }}
-                    src={`https://image.tmdb.org/t/p/w500/${c.profile_path}`}
+                    src={c.profile_path ?`https://image.tmdb.org/t/p/w500/${c.profile_path}` : NO_IMAGE}
                     alt={c.name}
                     className="  object-cover rounded-xl   "
                   />

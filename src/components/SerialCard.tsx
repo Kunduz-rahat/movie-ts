@@ -9,7 +9,7 @@ import { fetchSerialTrailers } from "../store/actions/serialTrailerListAction";
 import { fetchCastSerial } from "../store/actions/castSerialListAction";
 import { RootState } from "../types/rootTypes";
 import Spinner from "./Spinner";
-
+import NO_IMAGE from '../assets/image-not-found.png'
 
 export const SerialCard: React.FC = () => {
   const { id }: any = useParams<{ id: string }>();
@@ -96,7 +96,7 @@ export const SerialCard: React.FC = () => {
           </div>
         </div>
         <div className="pl-8 pr-8  mx-auto max-w-screen-xl">
-          <h2 className="italic text-2xl text-semibold m-3">Cast</h2>
+        {cast.length > 0 ?<h2 className="italic text-2xl text-semibold m-3">Cast</h2> : ''}  
           <Swiper
             pagination={{
               dynamicBullets: true,
@@ -128,7 +128,7 @@ export const SerialCard: React.FC = () => {
                 <Link to={`/actor/${c.id}`}>
                   <img
                     style={{ height: "200px" }}
-                    src={`https://image.tmdb.org/t/p/w500/${c.profile_path}`}
+                    src={c.profile_path ?`https://image.tmdb.org/t/p/w500/${c.profile_path}` : NO_IMAGE}
                     alt={c.name}
                     className="  object-cover rounded-xl   "
                   />
@@ -137,12 +137,11 @@ export const SerialCard: React.FC = () => {
             ))}
           </Swiper>
         </div>
-        <div className="lg:h-[480px] md:h-[420px] sm:h-[320px] h-[210px] rounded-md mx-auto shadow-lg mt-4 mx-auto max-w-screen-xl">
-          {youtubeVideos.map(
+                  {youtubeVideos.map(
             (trailer, idx) =>
               trailer.key && (
                 <div
-                  className="lg:h-[480px] md:h-[420px] sm:h-[320px] h-[210px] rounded-md mx-auto shadow-lg"
+                  className="lg:h-[480px] md:h-[420px] sm:h-[320px] h-[210px] rounded-md mx-auto mt-5 shadow-lg"
                   key={idx}
                 >
                   {trailer.key && (
@@ -158,7 +157,7 @@ export const SerialCard: React.FC = () => {
                 </div>
               )
           )}
-        </div>
+        
       </div>
     </div>
   );
