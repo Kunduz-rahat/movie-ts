@@ -11,23 +11,27 @@ import { SerialCard } from "./components/SerialCard";
 import { MovieCard } from "./components/MovieCard";
 import { Footer } from "./components/Footer";
 import { Layout } from "./components/Layout";
-
+import { Suspense } from "react";
+import Spinner from "./components/Spinner";
+// const Actors = React.lazy(() => import('./views/Actors'));
 export const App = () => {
   return (
     <BrowserRouter>
       {/* <NavBar /> */}
       <Layout>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="movies" element={<Movies />} />
-        <Route path="movie/:id" element={<MovieCard />} />
-        <Route path="actor/:id" element={<ActorCart />} />
-        <Route path="serial/:id" element={<SerialCard />} />
-        <Route path="actors" element={<Actors />} />
-        <Route path="serials" element={<Serials />} />
-      </Routes>
+        <Suspense fallback={<Spinner />}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="movies" element={<Movies />} />
+            <Route path="movie/:id" element={<MovieCard />} />
+            <Route path="actor/:id" element={<ActorCart />} />
+            <Route path="serial/:id" element={<SerialCard />} />
+            <Route path="actors" element={<Actors />} />
+            <Route path="serials" element={<Serials />} />
+          </Routes>
+        </Suspense>
       </Layout>
-     
+
       {/* <Footer/> */}
     </BrowserRouter>
   );

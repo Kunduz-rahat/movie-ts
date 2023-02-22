@@ -97,3 +97,7 @@ code {
     transform: translate(150%, -150%) scale(2, 2);
   }
 }
+ a{
+  text-decoration: none;
+  color: inherit;
+ }

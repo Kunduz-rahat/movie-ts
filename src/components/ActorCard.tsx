@@ -164,8 +164,8 @@ export const ActorCart: React.FC = () => {
                 <Link to={`/serial/${serial.id}`}>
                  <div className="flex items-center">
                  
-                  
-                 <Moment format=" YYYY" className="text-xl font-semibold">{serial.first_air_date}</Moment>
+                  {serial.first_air_date ?  <Moment format=" YYYY" className="text-xl font-semibold">{serial.first_air_date}</Moment> :'No date'}
+                
                  <svg
                    xmlns="http://www.w3.org/2000/svg"
                    fill="none"
