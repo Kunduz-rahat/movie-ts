@@ -142,8 +142,9 @@ export const MovieCard: React.FC = () => {
                     alt={c.name}
                     className="  object-cover rounded-xl hover:scale-110   "
                   />
-                  <p className="text-xl font-semibold hover:text-my-red mt-4">{c.name}</p>
+                 
                 </Link>
+                <p className="text-xl font-semibold  mt-4">{c.name}</p>
               </SwiperSlide>
             ))}
           </Swiper>

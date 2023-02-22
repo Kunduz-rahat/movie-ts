@@ -133,7 +133,7 @@ export const SerialCard: React.FC = () => {
           >
             {cast.map((c) => (
               <SwiperSlide>
-                <Link to={`/actor/${c.id}`}>
+                <Link to={`/actor/${c.id}` }key={c.id}>
                   <img
                     style={{ height: "200px" }}
                     src={
@@ -144,10 +144,11 @@ export const SerialCard: React.FC = () => {
                     alt={c.name}
                     className="  object-cover rounded-xl hover:scale-110  "
                   />
-                  <p className="font-semibold text-xl hover:text-my-red mt-4">
+                 
+                </Link>
+                <p className="font-semibold text-xl hover:text-my-red mt-4">
                     {c.name}
                   </p>
-                </Link>
               </SwiperSlide>
             ))}
           </Swiper>
