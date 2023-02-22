@@ -67,13 +67,14 @@ export const ActorCart: React.FC = () => {
           <div className="w-full md:w-2/3 lg:w-3/4 p-5 items-start justify-center bg-opacity-0 ">
             <div className="">
               <div>
-                <h2 className="text-5xl font-medium mb-6 text-transparent  bg-clip-text bg-gradient-to-r from-purple-400 to-pink-800">
+                <h2 className="text-5xl font-medium mb-6 text-slate-300">
                   {actor.name}
                 </h2>
               </div>
 
               <div className="rounded-3xl border-white">
-                <p className="text-xl  italic">{actor.biography}</p>
+                {actor.biography ?  <p className="text-xl  italic">{actor.biography}</p> : <p className="text-xl italic">{`We do not have a biography about ${actor.name}`}</p> }
+               
               </div>
             </div>
           </div>
@@ -127,6 +128,7 @@ export const ActorCart: React.FC = () => {
                   alt={movie.original_title}
                   className="  object-cover rounded-xl "
                 />
+                <p className="text-xl hover:text-my-red font-semibold">{movie.original_title}</p>
               </Link>
             </SwiperSlide>
           ))}
@@ -138,17 +140,19 @@ export const ActorCart: React.FC = () => {
             <p>{actor.known_for_department}</p>
             <p>Genger</p>
             <p>{actor.gender === 1 ? "Female" : "Male"}</p>
-            <p>Birthday</p>
+            {actor.birthday &&    <p>Birthday</p>}
+         
             <p>
               {actor.birthday && (
                 <Moment format="MMM D, YYYY">{actor.birthday}</Moment>
               )}
             </p>
-            <p>Place of birth</p>
+            {actor.place_of_birth &&     <p>Place of birth</p> }
+        
             <p>{actor.place_of_birth}</p>
           </div>
           <div className="w-2/3">
-            <h3>Acting for tv</h3>
+            {serials.length  >0 ?<h3>Acting for tv</h3> :''}
             {serials
               .sort((a, b) => {
                 return (

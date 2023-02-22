@@ -20,6 +20,7 @@ export interface IMovie {
   overview: string;
   poster_path: string;
   title: string;
+ 
 }
 
 export interface IGenge {

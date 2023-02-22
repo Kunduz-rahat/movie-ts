@@ -73,23 +73,29 @@ export const MovieCard: React.FC = () => {
                 className="  object-cover rounded-xl "
               />
             </div>
-            <div className="w-full md:w-2/3 lg:w-3/4 p-5 items-start justify-center bg-opacity-0 ">
+            <div className="w-full md:w-2/3 lg:w-3/4 p-5 items-start justify-center  ">
               <div className="">
                 <div>
-                  <h2 className="text-6xl  mb-6 text-transparent  bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 font-semibold">
+                  <h2 className="text-6xl  mb-6 text-slate-300 font-semibold">
                     {movie.original_title}
                   </h2>
                 </div>
 
-                <div className="rounded-3xl border-white">
+                <div className="">
+                  <div className="flex ">
                   {movie.genres &&
                     movie.genres.map((genre, idx) => (
-                      <span className="" key={idx}>
+                      <div className=" mr-3 border-white border-solid bottom-1 p-1" key={idx}>
                         {genre.name}{" "}
-                      </span>
+                      </div>
                     ))}
-                  <p className="text-xl  italic">{movie.overview}</p>
+                  </div>
+                 
+                  <p className="text-xl  italic ">{movie.overview}</p>
+                  <div className="mt-4 text-xl font-medium">
                   <Moment format="MMM D, YYYY">{movie.release_date}</Moment>
+                  </div>
+                 
                 </div>
               </div>
             </div>
@@ -136,6 +142,7 @@ export const MovieCard: React.FC = () => {
                     alt={c.name}
                     className="  object-cover rounded-xl   "
                   />
+                  <p className="text-xl font-semibold hover:text-my-red">{c.name}</p>
                 </Link>
               </SwiperSlide>
             ))}

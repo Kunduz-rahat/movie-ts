@@ -48,13 +48,13 @@ export const Actors: React.FC = () => {
           (actor, idx) =>
             actor.profile_path && (
               <div key={idx} className="rounded-lg">
-                <Link to={`/actor/${actor.id}`} className="hover:text-my-red">
+                <Link to={`/actor/${actor.id}`} >
                   <img
                     src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}
                     alt={actor.name}
-                    className="rounded-3xl"
+                    className="rounded-3xl hover:scale-110"
                   />
-                  <h3>{actor.name}</h3>
+                  <h3 className="font-semibold text-xl mt-4">{actor.name}</h3>
                 </Link>
               </div>
             )
