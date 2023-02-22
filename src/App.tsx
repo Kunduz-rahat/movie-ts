@@ -1,23 +1,20 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Suspense } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-
 import { Home } from "./views/Home";
 import { Actors } from "./views/Actors";
 import { Serials } from "./views/Serials";
 import { Movies } from "./views/Movies";
 import { ActorCart } from "./components/ActorCard";
-import { NavBar } from "./components/NavBar";
 import { SerialCard } from "./components/SerialCard";
 import { MovieCard } from "./components/MovieCard";
-import { Footer } from "./components/Footer";
 import { Layout } from "./components/Layout";
-import { Suspense } from "react";
 import Spinner from "./components/Spinner";
-// const Actors = React.lazy(() => import('./views/Actors'));
+
 export const App = () => {
   return (
     <BrowserRouter>
-      {/* <NavBar /> */}
+    
       <Layout>
         <Suspense fallback={<Spinner />}>
           <Routes>
@@ -32,7 +29,7 @@ export const App = () => {
         </Suspense>
       </Layout>
 
-      {/* <Footer/> */}
+    
     </BrowserRouter>
   );
 };

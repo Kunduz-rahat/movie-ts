@@ -3,7 +3,7 @@ import Moment from "react-moment";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Autoplay } from "swiper";
+import { Autoplay } from "swiper";
 import { fetchItemSerial } from "../store/actions/serialItemAction";
 import { fetchSerialTrailers } from "../store/actions/serialTrailerListAction";
 import { fetchCastSerial } from "../store/actions/castSerialListAction";
