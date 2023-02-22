@@ -9,12 +9,11 @@ import { fetchSerialTrailers } from "../store/actions/serialTrailerListAction";
 import { fetchCastSerial } from "../store/actions/castSerialListAction";
 import { RootState } from "../types/rootTypes";
 import Spinner from "./Spinner";
-import NO_IMAGE from '../assets/image-not-found.png'
+import NO_IMAGE from "../assets/image-not-found.png";
 
 export const SerialCard: React.FC = () => {
   const { id }: any = useParams<{ id: string }>();
   const dispatch = useDispatch();
-
 
   // Get serial item
 
@@ -36,7 +35,6 @@ export const SerialCard: React.FC = () => {
   );
   const { actorSerialLoading, cast } = castSerialList;
 
-
   useEffect(() => {
     dispatch<any>(fetchItemSerial(+id));
   }, [dispatch, id]);
@@ -44,7 +42,7 @@ export const SerialCard: React.FC = () => {
   useEffect(() => {
     dispatch<any>(fetchSerialTrailers(id));
   }, [dispatch, id]);
-  
+
   useEffect(() => {
     dispatch<any>(fetchCastSerial(id));
   }, [dispatch, id]);
@@ -70,7 +68,8 @@ export const SerialCard: React.FC = () => {
             <div className="mow-full lg:w-1/4 md:w-1/3 p-8 text-center flex mx-auto justify-center">
               <img
                 style={{ height: "350px" }}
-                src={`https://image.tmdb.org/t/p/w500/${serial.poster_path}`}
+                src={
+                 serial.backdrop_path? `https://image.tmdb.org/t/p/w500/${serial.poster_path}` :NO_IMAGE}
                 alt={serial.name}
                 className="  object-cover rounded-xl "
               />
@@ -78,7 +77,9 @@ export const SerialCard: React.FC = () => {
             <div className="w-full md:w-2/3 lg:w-3/4 p-5 items-start justify-center bg-opacity-0 ">
               <div className="">
                 <div>
-                  <h2 className="text-5xl font-medium mb-6 text-slate-300 " >{serial.name}</h2>
+                  <h2 className="text-5xl font-medium mb-6 text-slate-300 ">
+                    {serial.name}
+                  </h2>
                 </div>
 
                 <div className="rounded-3xl border-white">
@@ -89,14 +90,21 @@ export const SerialCard: React.FC = () => {
                       </span>
                     ))}
                   <p className="text-xl  italic">{serial.overview}</p>
-                  <Moment format="MMM D, YYYY">{serial.first_air_date}</Moment>
+                  <div className="mt-3 text-slate-300 text-lg font-medium">
+                  <Moment format="MMM D, YYYY" >{serial.first_air_date}</Moment>
+                  </div>
+               
                 </div>
               </div>
             </div>
           </div>
         </div>
         <div className="pl-8 pr-8  mx-auto max-w-screen-xl">
-        {cast.length > 0 ?<h2 className="italic text-2xl text-semibold m-3">Cast</h2> : ''}  
+          {cast.length > 0 ? (
+            <h2 className="italic text-2xl text-semibold m-3">Cast</h2>
+          ) : (
+            ""
+          )}
           <Swiper
             pagination={{
               dynamicBullets: true,
@@ -128,37 +136,42 @@ export const SerialCard: React.FC = () => {
                 <Link to={`/actor/${c.id}`}>
                   <img
                     style={{ height: "200px" }}
-                    src={c.profile_path ?`https://image.tmdb.org/t/p/w500/${c.profile_path}` : NO_IMAGE}
+                    src={
+                      c.profile_path
+                        ? `https://image.tmdb.org/t/p/w500/${c.profile_path}`
+                        : NO_IMAGE
+                    }
                     alt={c.name}
-                    className="  object-cover rounded-xl   "
+                    className="  object-cover rounded-xl hover:scale-110  "
                   />
-                  <p className="font-semibold text-xl hover:text-my-red">{c.name}</p>
+                  <p className="font-semibold text-xl hover:text-my-red mt-4">
+                    {c.name}
+                  </p>
                 </Link>
               </SwiperSlide>
             ))}
           </Swiper>
         </div>
-                  {youtubeVideos.map(
-            (trailer, idx) =>
-              trailer.key && (
-                <div
-                  className="lg:h-[480px] md:h-[420px] sm:h-[320px] h-[210px] rounded-md mx-auto mt-5 shadow-lg"
-                  key={idx}
-                >
-                  {trailer.key && (
-                    <iframe
-                      src={`https://www.youtube.com/embed/${trailer.key}?enablejsapi=1&origin=http://127.0.0.1:5173/`}
-                      title="trailer"
-                      width="100%"
-                      height="100%"
-                      className="rounded-md"
-                      allowFullScreen
-                    />
-                  )}
-                </div>
-              )
-          )}
-        
+        {youtubeVideos.map(
+          (trailer, idx) =>
+            trailer.key && (
+              <div
+                className="lg:h-[480px] md:h-[420px] sm:h-[320px] h-[210px] rounded-md mx-auto mt-5 shadow-lg"
+                key={idx}
+              >
+                {trailer.key && (
+                  <iframe
+                    src={`https://www.youtube.com/embed/${trailer.key}?enablejsapi=1&origin=http://127.0.0.1:5173/`}
+                    title="trailer"
+                    width="100%"
+                    height="100%"
+                    className="rounded-md"
+                    allowFullScreen
+                  />
+                )}
+              </div>
+            )
+        )}
       </div>
     </div>
   );
