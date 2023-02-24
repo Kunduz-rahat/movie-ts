@@ -52,7 +52,7 @@ export const SerialCard: React.FC = () => {
   return (
     <div>
       <div
-        className=" mx-auto text-left text-white "
+        className=" mx-auto text-left text-white  "
         style={{
           backgroundImage: `  linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0.5)),url(https://image.tmdb.org/t/p/original/${serial.backdrop_path} )`,
           backgroundPosition: "center",

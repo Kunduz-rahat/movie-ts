@@ -31,7 +31,7 @@ export const Actors: React.FC = () => {
     }
   };
   return (
-    <div className="mx-auto max-w-screen-xl">
+    <div className="mx-auto max-w-screen-xl ">
       <div className=" flex justify-end pr-10">
         <Search actors />
       </div>
@@ -43,7 +43,7 @@ export const Actors: React.FC = () => {
 					next={fetchNextPage}
 					hasMore={!nextLoading && hasMore}
 				>
-					 <div className="grid grid-cols-5 gap-4 p-5 ">
+					 <div className="grid grid-cols-1  lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 gap-4 p-5 ">
         {actors.map(
           (actor, idx) =>
             actor.profile_path && (

@@ -35,7 +35,7 @@ export const Movies: React.FC = () => {
   };
 
   return (
-    <div className="mx-auto max-w-screen-xl">
+    <div className="mx-auto max-w-screen-xl ">
       <div className="flex justify-end pr-10 ">
         <Search movies />
       </div>
@@ -47,7 +47,7 @@ export const Movies: React.FC = () => {
           next={fetchNextPage}
           hasMore={!nextLoading && hasMore}
         >
-          <div className="grid grid-cols-5 gap-4 p-5">
+          <div className="grid grid-cols-1  lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 gap-4 p-5">
             {movies.map(
               (movie, idx) =>
                 movie.poster_path && (

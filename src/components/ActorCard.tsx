@@ -119,9 +119,9 @@ export const ActorCart: React.FC = () => {
             },
           }}
         >
-          {cast.map((movie) => (
+          {cast.map((movie, idx) => (
             <SwiperSlide>
-              <Link to={`/movie/${movie.id}` } key={movie.id}>
+              <Link to={`/movie/${movie.id}` } key={idx}>
                 <img
                   style={{ height: "200px" }}
                   src={
@@ -179,8 +179,8 @@ export const ActorCart: React.FC = () => {
                   new Date(a.first_air_date).getTime()
                 );
               })
-              .map((serial) => (
-                <Link to={`/serial/${serial.id}`} key={serial.id}>
+              .map((serial, idx) => (
+                <Link to={`/serial/${serial.id}`} key={idx}>
                   <div className="flex items-center">
                     {serial.first_air_date ? (
                       <Moment format=" YYYY" className="text-xl font-semibold">

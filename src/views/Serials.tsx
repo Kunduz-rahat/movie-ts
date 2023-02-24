@@ -38,7 +38,7 @@ export const Serials: React.FC = () => {
   if (loading) return <Spinner />;
 
   return (
-    <div className="max-w-screen-xl mx-auto">
+    <div className="max-w-screen-xl mx-auto ">
       <div className="flex justify-end pr-10 ">
         <Search serials />
       </div>
