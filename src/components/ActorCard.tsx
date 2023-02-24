@@ -140,8 +140,8 @@ export const ActorCart: React.FC = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-        <div className="flex justify-between mt-5 mb-5">
-          <div className="w-1/3">
+        <div className="md:flex justify-between mt-5 mb-5 ">
+          <div className="md:w-1/3 w-full">
             <h3 className="text-2xl font-semibold mb-4"> Personal info</h3>
             <p className="text-slate-300">Know for:</p>
             <p className="font-semibold text-lg ">
@@ -164,9 +164,9 @@ export const ActorCart: React.FC = () => {
 
             <p className="font-semibold text-lg">{actor.place_of_birth}</p>
           </div>
-          <div className="w-2/3">
+          <div className="md:w-2/3 w-full">
             {serials.length > 0 ? (
-              <h3 className="text-2xl font-medium mb-3 text-slate-300">
+              <h3 className="text-2xl font-medium mb-3 text-slate-300 md:mt-0 mt-3">
                 Acting for tv
               </h3>
             ) : (

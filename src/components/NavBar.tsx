@@ -15,7 +15,7 @@ export const NavBar: React.FC = () => {
             </span>
           </a>
         </div>
-        <ul className="text-semibold md:flex md:items-center  md:static text-white   md:opacity-100   sm:text-black md:w-auto w-full left-0">
+        <ul className="text-semibold md:flex md:items-center flex  md:static text-white   md:opacity-100   sm:text-black md:w-auto w-full left-0">
           <li className="mx-4">
             <NavLink
               to={"/"}
