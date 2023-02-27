@@ -17,5 +17,5 @@
 ## Screenshots
 
 
-<kbd><img  alt="home" src='../assets/home.png'></kbd>
+![Image alt](https://github.com/Kunduz-rahat/movie-ts/raw/main/src/assets/home.png)
 
