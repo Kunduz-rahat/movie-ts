@@ -17,5 +17,12 @@
 ## Screenshots
 
 
-![Image alt](https://github.com/Kunduz-rahat/movie-ts/raw/main/src/assets/home.png)
+![home](/src/assets/home.jpg)
+![serialPage](/src/assets/serialsPage.jpg)
+![moviePage](/src/assets/moviePage.jpg)
+![actorPage](/src/assets/aboutActor.jpg)
+![serialInfoPage](/src/assets/aboutSerial.jpg)
+![movieInfoPage](/src/assets/aboutMovie.jpg)
+![actorInfoPage](/src/assets/aboutActor.jpg)
+
 
