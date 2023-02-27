@@ -77,7 +77,7 @@ export const SerialCard: React.FC = () => {
             <div className="w-full md:w-2/3 lg:w-3/4 p-5 items-start justify-center bg-opacity-0 ">
               <div className="">
                 <div>
-                  <h2 className="text-5xl font-medium mb-6 text-slate-300 ">
+                  <h2 className="md:text-5xl text-3xl font-medium mb-6 text-slate-300 ">
                     {serial.name}
                   </h2>
                 </div>

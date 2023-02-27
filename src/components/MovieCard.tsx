@@ -76,7 +76,7 @@ export const MovieCard: React.FC = () => {
             <div className="w-full md:w-2/3 lg:w-3/4 p-5 items-start justify-center  ">
               <div className="">
                 <div>
-                  <h2 className="text-6xl  mb-6 text-slate-300 font-semibold">
+                  <h2 className="md:text-6xl   text-3xl mb-6 text-slate-300 font-semibold">
                     {movie.original_title}
                   </h2>
                 </div>

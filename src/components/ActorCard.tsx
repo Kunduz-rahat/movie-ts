@@ -68,7 +68,7 @@ export const ActorCart: React.FC = () => {
           <div className="w-full md:w-2/3 lg:w-3/4 p-5 items-start justify-center bg-opacity-0 ">
             <div className="">
               <div>
-                <h2 className="text-5xl font-medium mb-6 text-slate-300">
+                <h2 className="md:text-5xl text-3xl font-medium mb-6 text-slate-300">
                   {actor.name}
                 </h2>
               </div>
@@ -183,7 +183,7 @@ export const ActorCart: React.FC = () => {
                 <Link to={`/serial/${serial.id}`} key={idx}>
                   <div className="flex items-center">
                     {serial.first_air_date ? (
-                      <Moment format=" YYYY" className="text-xl font-semibold">
+                      <Moment format=" YYYY" className="md:text-xl text-sm font-semibold">
                         {serial.first_air_date}
                       </Moment>
                     ) : (
@@ -205,11 +205,11 @@ export const ActorCart: React.FC = () => {
                       />
                     </svg>
 
-                    <p className="ml-2 text-slate-300 text-lg">
+                    <p className="ml-2 text-slate-300 md:text-lg text-sm">
                       {serial.original_name}
                     </p>
 
-                    <p className=" ml-2 text-slate-100 text-lg">
+                    <p className=" ml-2 text-slate-100 md:text-lg text-sm">
                       {" "}
                       <span>{serial.character ? "as" : ""}</span>{" "}
                       {serial.character ? serial.character : ""}
