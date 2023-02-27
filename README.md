@@ -2,7 +2,7 @@
 
 
 
-## [Live Demo](https://movie-j475bez1q-kunduz-rahat.vercel.app/)
+## [Live Demo](https://movie-h8t66otpc-kunduz-rahat.vercel.app/)
 
 ## Возможности
 
