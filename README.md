@@ -20,7 +20,7 @@
 ![home](/src/assets/home.jpg)
 ![serialPage](/src/assets/serialsPage.jpg)
 ![moviePage](/src/assets/moviePage.jpg)
-![actorPage](/src/assets/aboutActor.jpg)
+![actorPage](/src/assets/actorsPage.jpg)
 ![serialInfoPage](/src/assets/aboutSerial.jpg)
 ![movieInfoPage](/src/assets/aboutMovie.jpg)
 ![actorInfoPage](/src/assets/aboutActor.jpg)
